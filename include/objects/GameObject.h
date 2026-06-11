@@ -5,12 +5,11 @@
 class GameObject: public sf::Drawable
 {
 public:
-
-  GameObject(const sf::Texture& texture, float posX,float posY);
+  GameObject(const sf::Texture& texture, const sf::Vector2f& pos);
   virtual ~GameObject() = default;
 
-  virtual void update(float timeLeft) = 0;
+  virtual void update(sf::Time time) = 0;
 
-private:
+protected:
   sf::Sprite m_sprite;
 };

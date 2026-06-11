@@ -1,7 +1,7 @@
 #include "GameObject.h"
 
-GameObject::GameObject(const sf::Texture& texture, float posX, float posY):
+GameObject::GameObject(const sf::Texture& texture, const sf::Vector2f& pos):
   m_sprite(texture)
 {
-  m_sprite.setPosition({ posX,posY });
+  m_sprite.setPosition(pos);
 }

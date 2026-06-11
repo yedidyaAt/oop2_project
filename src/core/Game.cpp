@@ -3,6 +3,8 @@
 #include "KeyboardStrategy.h"
 #include "AIStrategy.h"
 
+#include "Wall.h"
+
 #include <iostream>
 
 Game::Game() :
@@ -18,6 +20,14 @@ Game::Game() :
 void Game::run()
 {
 	m_clock.restart();
+	sf::Texture t;
+	
+	if (!t.loadFromFile("fack.png"))
+	{
+		throw std::runtime_error("not found png");
+	}
+
+	Wall wallObj(t,{0.f,0.f});
 
 	while (m_window.isOpen())
 	{
@@ -42,6 +52,7 @@ void Game::run()
 		m_carAI.update(m_timeLeft);
 
 		m_window.clear();
+		m_window.draw(wallObj);
 		m_window.draw(m_car);
 		m_window.draw(m_carAI);
 		m_window.display();

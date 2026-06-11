@@ -1,0 +1,13 @@
+#pragma once
+
+enum class Objects
+{
+	PLAYER_CAR,
+	PARKED_CAR,
+	PARKING_SPOT,
+	WALL,
+	CONE,
+	BARRIER,
+	GROUND,
+	GRASS_ISLAND
+};

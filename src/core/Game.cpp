@@ -1,10 +1,10 @@
 #include "Game.h"
-#include "DisplaySettings.h"
-#include "KeyboardStrategy.h"
-#include "AIStrategy.h"
 
-#include "Wall.h"
+
+
+#include "DisplaySettings.h"
 #include "ResourceManager.h"
+#include "Factory.h"
 
 #include <iostream>
 
@@ -15,6 +15,15 @@ Game::Game() :
 	m_timeAccumulated(0)
 {
 	m_window.setFramerateLimit(60);
+	ResourceManager::getInstance().load();
+
+	LevelData lD = m_loader.getData("resources/levels/level_01.json");
+
+	for (const auto& objData : lD.m_objects)
+	{
+		m_objects.emplace_back(factory::create(objData));
+	}
+
 }
 
 void Game::run()
@@ -41,12 +50,17 @@ void Game::run()
 		}
 
 		m_window.clear();
+
+		for (const auto& obj : m_objects)
+		{
+			m_window.draw(*obj);
+		}
 		m_window.display();
 	}
 
 }
 
-void Game::handle(sf::Event::Closed& closed)
+void Game::handle(sf::Event::Closed& /*closed*/)
 {
 	m_window.close();
 }

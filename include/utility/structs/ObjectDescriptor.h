@@ -1,15 +1,15 @@
 #pragma once
 
-#include<string>
+#include "Objects.h"
 
 struct ObjectDescriptor
 {
-  ObjectDescriptor(const std::string& type, int x, int y) :
+  ObjectDescriptor(Objects type, int x, int y) :
     m_type(type),
     m_x(x),
     m_y(y)
   {}
 
-  std::string m_type;
-  int m_x, m_y;
+  Objects  m_type;
+  float m_x, m_y;
 };

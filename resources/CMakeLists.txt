@@ -5,5 +5,5 @@ file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/images/object
 
 #file json
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/levels
-     DESTINATION ${CMAKE_BINARY_DIR}/resources/
+     DESTINATION ${CMAKE_BINARY_DIR}/resources
      FILES_MATCHING PATTERN "*.json")

@@ -2,7 +2,10 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "Car.h"
+#include "Loader.h"
+#include "GameObject.h"
+
+#include <memory>
 
 class Game
 {
@@ -20,4 +23,7 @@ private:
   float            m_timeLeft;
   int              m_frameCount;
   float           m_timeAccumulated;
+
+  Loader m_loader;
+  std::vector<std::unique_ptr<GameObject>> m_objects = std::vector<std::unique_ptr<GameObject>>();
 };

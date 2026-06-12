@@ -3,7 +3,9 @@
 
 #include "json.hpp"
 
-#include "fileutils.h"
+#include "fileUtils.h"
+#include "Objects.h"
+#include "objectUtils.h"
 
 #include <exception>
 
@@ -17,7 +19,7 @@ LevelData Loader::getData(const std::string& path)const
 {
   using json = nlohmann::json;
 
-  std::ifstream file = fileutils::openForReading(path);
+  std::ifstream file = fileUtils::openForReading(path);
   LevelData levelData;
 
   try {
@@ -27,8 +29,9 @@ LevelData Loader::getData(const std::string& path)const
     
     for (const auto& obj : jFile.at("objects"))
     {
+      Objects typeObj = objectUtils::getObjectConversionByStr(obj.at("type").get<std::string>());
       levelData.m_objects.emplace_back(
-        obj.at("type").get<std::string>(),
+        typeObj,
         obj.at("x").get<int>(),
         obj.at("y").get<int>()
         );

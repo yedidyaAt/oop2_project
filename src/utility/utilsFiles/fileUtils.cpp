@@ -1,6 +1,6 @@
 #include "fileutils.h"
 
-std::ifstream fileutils::openForReading(const std::string& path)
+std::ifstream fileUtils::openForReading(const std::string& path)
 {
   std::ifstream file(path);
 

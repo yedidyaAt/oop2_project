@@ -4,13 +4,13 @@
 #include "AIStrategy.h"
 
 #include "Wall.h"
+#include "ResourceManager.h"
 
 #include <iostream>
 
 Game::Game() :
 	m_window(sf::VideoMode(sf::Vector2u{ display::WINDOW_WIDTH,display::WINDOW_HIEGHT }), "FACK FACE"),
-	m_car(std::make_unique<KeyboardStrategy>()),
-	m_carAI(std::make_unique<AIStrategy>()),
+	m_timeLeft(0.f),
 	m_frameCount(0),
 	m_timeAccumulated(0)
 {
@@ -20,14 +20,6 @@ Game::Game() :
 void Game::run()
 {
 	m_clock.restart();
-	sf::Texture t;
-	
-	if (!t.loadFromFile("fack.png"))
-	{
-		throw std::runtime_error("not found png");
-	}
-
-	Wall wallObj(t,{0.f,0.f});
 
 	while (m_window.isOpen())
 	{
@@ -48,13 +40,7 @@ void Game::run()
 			event->visit([&](auto event) {handle(event);});
 		}
 
-		m_car.update(m_timeLeft);
-		m_carAI.update(m_timeLeft);
-
 		m_window.clear();
-		m_window.draw(wallObj);
-		m_window.draw(m_car);
-		m_window.draw(m_carAI);
 		m_window.display();
 	}
 

@@ -16,8 +16,6 @@ public:
   void handle(sf::Event::Closed& closed);
 private:
   sf::RenderWindow m_window;
-  Car              m_car;
-  Car              m_carAI;
   sf::Clock        m_clock;
   float            m_timeLeft;
   int              m_frameCount;

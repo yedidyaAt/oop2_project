@@ -14,7 +14,7 @@ std::vector<std::string> Playlist::getPlaylist(const std::string& path) const
   std::vector<std::string> listVec;
   
   try {
-    std::ifstream file = fileutils::openForReading(path);
+    std::ifstream file = fileUtils::openForReading(path);
 
     json jFile = json::parse(file);
     

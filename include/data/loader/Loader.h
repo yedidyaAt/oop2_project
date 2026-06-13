@@ -13,7 +13,4 @@ public:
   explicit Loader();
 
   LevelData getData(const std::string& path)const;
-
-private:
-
 };

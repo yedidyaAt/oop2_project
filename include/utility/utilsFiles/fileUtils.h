@@ -2,6 +2,6 @@
 #include <string>
 #include <fstream>
 
-namespace fileutils {
+namespace fileUtils {
   std::ifstream openForReading(const std::string& path);
 }

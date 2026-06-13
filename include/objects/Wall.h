@@ -5,7 +5,7 @@
 class Wall : public GameObject
 {
 public:
-  Wall(const sf::Texture& texture, const sf::Vector2f& pos);
+  Wall(const sf::Vector2f& pos);
 
   void update(sf::Time time)override;
 

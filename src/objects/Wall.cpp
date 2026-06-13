@@ -3,6 +3,7 @@
 #include <memory>
 
 #include "ResourceManager.h"
+#include "ObjectSettings.h"
 #include "Factory.h"
 
 //register
@@ -17,7 +18,7 @@ static const bool registery = factory::registerCreator(
 
 
 Wall::Wall(const sf::Vector2f& pos) :
-  GameObject(ResourceManager::getInstance().getTexture(Objects::WALL), pos) { }
+    GameObject(ResourceManager::getInstance().getTexture(Objects::WALL), pos, sf::Vector2f{ statics::WALL_WIDTH, statics::WALL_HEIGHT }) { }
 
 void Wall::update(sf::Time /*time*/)
 {

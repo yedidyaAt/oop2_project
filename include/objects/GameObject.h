@@ -8,7 +8,7 @@ public:
   GameObject(const sf::Texture& texture, const sf::Vector2f& pos);
   virtual ~GameObject() = default;
 
-  virtual void update(sf::Time time) = 0;
+  virtual void update	(sf::Time time) = 0;
 
 protected:
   sf::Sprite m_sprite;

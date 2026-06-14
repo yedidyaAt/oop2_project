@@ -17,8 +17,10 @@ static const bool registery = factory::registerCreator(
 
 
 
-Wall::Wall(const sf::Vector2f& pos) :
-    GameObject(ResourceManager::getInstance().getTexture(Objects::WALL), pos, sf::Vector2f{ statics::WALL_WIDTH, statics::WALL_HEIGHT }) { }
+Wall::Wall(const sf::Vector2f& pos)
+    : GameObject(ResourceManager::getInstance().getTexture(Objects::WALL) ,pos,objectSizes::Wall::WIDTH)
+{
+}
 
 void Wall::update(sf::Time /*time*/)
 {

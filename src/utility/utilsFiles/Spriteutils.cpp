@@ -1,9 +1,8 @@
 #include "Spriteutils.h"
 
-void spriteutils::fitToSize(sf::Sprite& s, const sf::Vector2f& size)
+void spriteutils::fitToSize(sf::Sprite& s, const float x)
 {
-	s.setScale(sf::Vector2f{
-		size.x / static_cast<float>(s.getTexture().getSize().x),
-		size.y / static_cast<float>(s.getTexture().getSize().y)
-	});
+	float scale = x / static_cast<float>(s.getTexture().getSize().x);
+	s.setScale(sf::Vector2f{scale,scale});
 }
+

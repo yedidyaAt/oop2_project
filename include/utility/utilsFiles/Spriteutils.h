@@ -2,5 +2,5 @@
 #include <SFML/Graphics.hpp>
 	
 namespace spriteutils {
-	void fitToSize(sf::Sprite& s, const sf::Vector2f& size);
+	void fitToSize(sf::Sprite& s, const float x);
 }

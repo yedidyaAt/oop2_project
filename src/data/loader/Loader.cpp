@@ -3,9 +3,9 @@
 
 #include "json.hpp"
 
-#include "fileUtils.h"
+#include "FileUtils.h"
 #include "Objects.h"
-#include "objectUtils.h"
+#include "ObjectUtils.h"
 
 #include <exception>
 
@@ -33,7 +33,8 @@ LevelData Loader::getData(const std::string& path)const
       levelData.m_objects.emplace_back(
         typeObj,
         obj.at("x").get<int>(),
-        obj.at("y").get<int>()
+        obj.at("y").get<int>(),
+        obj.value("rotation",0.0f)
         );
     }
 

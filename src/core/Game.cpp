@@ -1,6 +1,6 @@
 #include "Game.h"
 
-
+#include "KeyboardStrategy.h"
 
 #include "DisplaySettings.h"
 #include "ResourceManager.h"
@@ -12,7 +12,8 @@ Game::Game() :
 	m_window(sf::VideoMode(sf::Vector2u{ display::WINDOW_WIDTH,display::WINDOW_HIEGHT }), "FACK FACE"),
 	m_timeLeft(0.f),
 	m_frameCount(0),
-	m_timeAccumulated(0)
+	m_timeAccumulated(0),
+	m_car(std::make_unique<KeyboardStrategy>())
 {
 	m_window.setFramerateLimit(60);
 	ResourceManager::getInstance().load();
@@ -29,6 +30,8 @@ Game::Game() :
 void Game::run()
 {
 	m_clock.restart();
+
+	sf::Color roudColor(40, 40, 40);
 
 	while (m_window.isOpen())
 	{
@@ -49,12 +52,16 @@ void Game::run()
 			event->visit([&](auto event) {handle(event);});
 		}
 
-		m_window.clear();
+		m_car.update(m_timeLeft);
+
+
+		m_window.clear(roudColor);
 
 		for (const auto& obj : m_objects)
 		{
 			m_window.draw(*obj);
 		}
+		m_window.draw(m_car);
 		m_window.display();
 	}
 

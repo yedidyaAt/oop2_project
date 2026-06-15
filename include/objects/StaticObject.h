@@ -2,10 +2,11 @@
 
 #include "GameObject.h"
 
-class Wall : public GameObject
+class StaticObject : public GameObject
 {
 public:
-  Wall(const sf::Vector2f& pos);
+  StaticObject(const sf::Texture& texture, const sf::Vector2f& pos,
+                                    float fitSize,sf::Angle angle);
 
   void update(sf::Time time)override;
 

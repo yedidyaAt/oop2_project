@@ -7,6 +7,8 @@
 
 #include <memory>
 
+#include "Car.h"
+
 class Game
 {
 public:
@@ -22,7 +24,8 @@ private:
   sf::Clock        m_clock;
   float            m_timeLeft;
   int              m_frameCount;
-  float           m_timeAccumulated;
+  float            m_timeAccumulated;
+  Car              m_car;
 
   Loader m_loader;
   std::vector<std::unique_ptr<GameObject>> m_objects = std::vector<std::unique_ptr<GameObject>>();

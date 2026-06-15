@@ -2,18 +2,147 @@
   "objects": [
     {
       "type": "wall",
-      "x": 100,
-      "y": 100
+      "x": 0,
+      "y": 0,
+      "rotation": 0
     },
     {
       "type": "wall",
       "x": 100,
-      "y": 200
+      "y": 0,
+      "rotation": 0
     },
     {
       "type": "wall",
-      "x": 100,
-      "y": 300
+      "x": 200,
+      "y": 0,
+      "rotation": 0
+    },
+    {
+      "type": "wall",
+      "x": 300,
+      "y": 0,
+      "rotation": 0
+    },
+    {
+      "type": "wall",
+      "x": 400,
+      "y": 0,
+      "rotation": 0
+    },
+    {
+      "type": "wall",
+      "x": 500,
+      "y": 0,
+      "rotation": 0
+    },
+    {
+      "type": "wall",
+      "x": 600,
+      "y": 0,
+      "rotation": 0
+    },
+    {
+      "type": "wall",
+      "x": 700,
+      "y": 0,
+      "rotation": 0
+    },
+    {
+      "type": "wall",
+      "x": 800,
+      "y": 0,
+      "rotation": 0
+    },
+    {
+      "type": "barrier",
+      "x": 60,
+      "y": 30,
+      "rotation": 90
+    },
+    {
+      "type": "barrier",
+      "x": 60,
+      "y": 110,
+      "rotation": 90
+    },
+    {
+      "type": "barrier",
+      "x": 60,
+      "y": 190,
+      "rotation": 90
+    },
+    {
+      "type": "barrier",
+      "x": 700,
+      "y": 30,
+      "rotation": 90
+    },
+    {
+      "type": "barrier",
+      "x": 700,
+      "y": 110,
+      "rotation": 90
+    },
+    {
+      "type": "barrier",
+      "x": 700,
+      "y": 190,
+      "rotation": 90
+    },
+    {
+      "type": "grass_island",
+      "x": 90,
+      "y": 270,
+      "rotation": 90
+    },
+    {
+      "type": "grass_island",
+      "x": 90,
+      "y": 470,
+      "rotation": 90
+    },
+    {
+      "type": "grass_island",
+      "x": 350,
+      "y": 270,
+      "rotation": 90
+    },
+    {
+      "type": "grass_island",
+      "x": 350,
+      "y": 470,
+      "rotation": 90
+    },
+    {
+      "type": "grass_island",
+      "x": 350,
+      "y": 270,
+      "rotation": 0
+    },
+    {
+      "type": "grass_island",
+      "x": 550,
+      "y": 270,
+      "rotation": 0
+    },
+    {
+      "type": "grass_island",
+      "x": 750,
+      "y": 270,
+      "rotation": 0
+    },
+    {
+      "type": "parking_spot",
+      "x": 500,
+      "y": 30,
+      "rotation": 0
+    },
+    {
+      "type": "parked_car",
+      "x": 120,
+      "y": 470,
+      "rotation": 0
     }
   ]
 }

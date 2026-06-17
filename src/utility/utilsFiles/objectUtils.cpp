@@ -10,7 +10,10 @@ Objects objectUtils::getObjectConversionByStr(const std::string& objStr)
       {"cone",         Objects::CONE},
       {"barrier",      Objects::BARRIER},
       {"ground",       Objects::GROUND},
-      {"grass_island", Objects::GRASS_ISLAND}
+      {"grass_island", Objects::GRASS_ISLAND},
+      {"parking",      Objects::PARKING},
+      {"crossing",     Objects::CROSSING},
+      {"lane_divider", Objects::LANE_DIVIDER}
   };
 
    return table.at(objStr);

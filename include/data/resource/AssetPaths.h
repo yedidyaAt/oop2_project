@@ -15,6 +15,9 @@ namespace AssetPaths {
     inline const std::string BARRIER = IMAGES_DIR + "barrier.png";
     inline const std::string GROUND = IMAGES_DIR + "ground.png";
     inline const std::string GRASS_ISLAND = IMAGES_DIR + "grass_island.png";
+    inline const std::string PARKING = IMAGES_DIR + "parking.png";
+    inline const std::string CROSSING = IMAGES_DIR + "crossing.png";
+    inline const std::string LANE_DIVIDER = IMAGES_DIR + "lane_divider.png";
   }
 
   // בעתיד תוסיף בלוקים נוספים, לדוגמה:

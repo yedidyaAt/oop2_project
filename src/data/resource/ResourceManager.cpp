@@ -35,6 +35,15 @@ void ResourceManager::load() {
   if (!m_textures[Objects::GRASS_ISLAND].loadFromFile(AssetPaths::Objects::GRASS_ISLAND)) {
     throw std::runtime_error("Failed to load texture: " + AssetPaths::Objects::GRASS_ISLAND);
   }
+  if (!m_textures[Objects::PARKING].loadFromFile(AssetPaths::Objects::PARKING)) {
+    throw std::runtime_error("Failed to load texture: " + AssetPaths::Objects::PARKING);
+  }
+  if (!m_textures[Objects::CROSSING].loadFromFile(AssetPaths::Objects::CROSSING)) {
+    throw std::runtime_error("Failed to load texture: " + AssetPaths::Objects::CROSSING);
+  }
+  if (!m_textures[Objects::LANE_DIVIDER].loadFromFile(AssetPaths::Objects::LANE_DIVIDER)) {
+    throw std::runtime_error("Failed to load texture: " + AssetPaths::Objects::LANE_DIVIDER);
+  }
 }
 
 const sf::Texture& ResourceManager::getTexture(const Objects& key) {

@@ -12,12 +12,12 @@ bool AIStrategy::wantsReverse()
 
 bool AIStrategy::wantsLeft()
 {
-  return false;
+  return true;
 }
 
 bool AIStrategy::wantsRight()
 {
-  return true;
+  return false;
 }
 
 bool AIStrategy::wantsBrake()

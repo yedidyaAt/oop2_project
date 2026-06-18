@@ -3,7 +3,8 @@
 enum class Objects
 {
 	PLAYER_CAR,
-	PARKED_CAR,
+	WHEEL,
+  PARKED_CAR,
 	PARKING_SPOT,
 	WALL,
 	CONE,

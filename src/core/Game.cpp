@@ -1,10 +1,12 @@
 #include "Game.h"
 
 #include "KeyboardStrategy.h"
+#include "AIStrategy.h"
 
 #include "DisplaySettings.h"
 #include "ResourceManager.h"
 #include "Factory.h"
+#include "ObjectSizes.h"
 
 #include <iostream>
 
@@ -13,10 +15,15 @@ Game::Game() :
 	m_timeLeft(0.f),
 	m_frameCount(0),
 	m_timeAccumulated(0),
-	m_car(std::make_unique<KeyboardStrategy>())
+	m_car(std::make_unique<Car>(
+		ResourceManager::getInstance().getTexture(Objects::PLAYER_CAR),
+		sf::Vector2f{},
+		objectSizes::playerCar::WIDTH,
+		sf::degrees(90),
+		std::make_unique<KeyboardStrategy>())
+	)
 {
 	m_window.setFramerateLimit(60);
-	ResourceManager::getInstance().load();
 
 	LevelData lD = m_loader.getData("resources/levels/level_01.json");
 
@@ -35,7 +42,9 @@ void Game::run()
 
 	while (m_window.isOpen())
 	{
-		m_timeLeft = m_clock.restart().asSeconds();
+		sf::Time time = m_clock.restart();
+
+		m_timeLeft = time.asSeconds();
 
 		m_timeAccumulated += m_timeLeft;
 		m_frameCount++;
@@ -52,16 +61,16 @@ void Game::run()
 			event->visit([&](auto event) {handle(event);});
 		}
 
-		m_car.update(m_timeLeft);
+		m_car->update(time);
 
-
-		m_window.clear(roudColor);
+		m_window.clear(sf::Color::White);
 
 		for (const auto& obj : m_objects)
 		{
 			m_window.draw(*obj);
 		}
-		m_window.draw(m_car);
+
+		m_window.draw(*m_car);
 		m_window.display();
 	}
 

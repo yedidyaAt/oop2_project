@@ -25,7 +25,7 @@ private:
   float            m_timeLeft;
   int              m_frameCount;
   float            m_timeAccumulated;
-  Car              m_car;
+  std::unique_ptr<Car> m_car;
 
   Loader m_loader;
   std::vector<std::unique_ptr<GameObject>> m_objects = std::vector<std::unique_ptr<GameObject>>();

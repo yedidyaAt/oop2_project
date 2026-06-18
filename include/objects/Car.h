@@ -3,17 +3,22 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 
+#include "GameObject.h"
 #include "ControlStrategy.h"
 
-class Car:public sf::Transformable,public sf::Drawable
+class Car:public sf::Transformable,public GameObject
 {
 public:
-  Car(std::unique_ptr<ControlStrategy> control);
+  Car(const sf::Texture& texture, const sf::Vector2f& pos,
+                  float fitSize,
+                  sf::Angle angle,
+                  std::unique_ptr<ControlStrategy> control);
+
     
   void draw(sf::RenderTarget& window, sf::RenderStates state)const override;
 
-  void update(float time);
-
+  void update(sf::Time time);  
+private:
   void drive(float time);
   void gas(float time);
   void reverse(float time);
@@ -22,16 +27,13 @@ public:
 
   void rotateRight(float time);
   void rotateLeft(float time);
+  void centerWheel(float time);
   void gravitySlow(float time);
   void slowEngine(float time, float slowBy);
-  
-private:
-  void centerWheel(float time);
 
   std::unique_ptr<ControlStrategy> m_control;
-  sf::RectangleShape m_rCar;
-  sf::RectangleShape m_whileR;
-  sf::RectangleShape m_whileL;
+  sf::Sprite m_whileR;
+  sf::Sprite m_whileL;
   float              m_angleWheel;
   float              m_heading;
   float              m_speed;

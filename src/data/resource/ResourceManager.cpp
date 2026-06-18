@@ -35,6 +35,9 @@ void ResourceManager::load() {
   if (!m_textures[Objects::GRASS_ISLAND].loadFromFile(AssetPaths::Objects::GRASS_ISLAND)) {
     throw std::runtime_error("Failed to load texture: " + AssetPaths::Objects::GRASS_ISLAND);
   }
+  if (!m_textures[Objects::WHEEL].loadFromFile(AssetPaths::Objects::WHEEL)) {
+    throw std::runtime_error("Failed to load texture: " + AssetPaths::Objects::WHEEL);
+  }
 }
 
 const sf::Texture& ResourceManager::getTexture(const Objects& key) {

@@ -1,32 +1,71 @@
 #include "Car.h"
 #include "CarSettings.h"
 
+#include "Factory.h"
+#include "Objects.h"
+#include "ObjectDescriptor.h"
+#include "StaticObject.h"
+#include "ResourceManager.h"
+#include "ObjectSizes.h"
+#include "KeyboardStrategy.h"
+#include "SpriteUtils.h"
+
 #include <cmath>
 #include <numbers>
 #include <utility>
 #include <iostream>
 
-Car::Car(std::unique_ptr<ControlStrategy> control) :
+
+
+// ======== register =========
+static bool registery = factory::registerCreator(Objects::PLAYER_CAR,
+  [](const ObjectDescriptor& objDes)
+  {
+    return std::make_unique<Car>(
+      ResourceManager::getInstance().getTexture(Objects::PLAYER_CAR),
+      sf::Vector2f{ objDes.m_x, objDes.m_y },
+      objectSizes::playerCar::WIDTH,
+      sf::degrees(objDes.m_angle),
+      std::make_unique<KeyboardStrategy>());
+  }
+);
+
+
+Car::Car(const sf::Texture& texture,
+         const sf::Vector2f& pos,
+         float fitSize,
+         sf::Angle angle,
+         std::unique_ptr<ControlStrategy> control):
+ 
+  GameObject(texture,pos),
   m_control(std::move(control)),
-  m_rCar(sf::Vector2f({ 300.f,200.f })),
-  m_whileR({ 50.f,20.f }),
-  m_whileL({ 50.f,20.f }),
+  m_whileR(ResourceManager::getInstance().getTexture(Objects::WHEEL)),
+  m_whileL(ResourceManager::getInstance().getTexture(Objects::WHEEL)),
   m_angleWheel(0.f),
-  m_heading(0.f),
+  m_heading(angle.asDegrees()),
   m_speed(0.f)
 {
+  this->setRotation(angle);
   this->setPosition({ 400.f,300.f });
-  m_rCar.setFillColor(sf::Color::Blue);
-  m_rCar.setOrigin({ 150.f,100.f });
-  m_rCar.setPosition({ 0.f,0.f });
 
-  m_whileL.setFillColor(sf::Color::Yellow);
-  m_whileL.setOrigin({ 25.f,10.f });
-  m_whileL.setPosition({ -120.f, 90.f });
+  spriteUtils::fitToSize(m_sprite, fitSize);
+  m_sprite.setOrigin(m_sprite.getLocalBounds().size/2.f);
+  m_sprite.setPosition({ 0.f,0.f });
 
-  m_whileR.setFillColor(sf::Color::Yellow);
-  m_whileR.setOrigin({ 25.f,10.f });
-  m_whileR.setPosition({ -120.f,-90.f });
+  sf::Vector2f halfBody{
+     m_sprite.getLocalBounds().size.x / 2.f * m_sprite.getScale().x,
+     m_sprite.getLocalBounds().size.y / 2.f * m_sprite.getScale().y
+  };
+
+  spriteUtils::fitToSize(m_whileL, objectSizes::wheel::WIDTH);
+  m_whileL.setOrigin(m_whileL.getLocalBounds().size / 2.f);
+  m_whileL.setPosition({ -halfBody.x*car::OFFEST_WHEEL_X,
+                          halfBody.y* car::OFFEST_WHEEL_Y});
+
+  spriteUtils::fitToSize(m_whileR, objectSizes::wheel::WIDTH);
+  m_whileR.setOrigin(m_whileR.getLocalBounds().size / 2.f);
+  m_whileR.setPosition({ -halfBody.x* car::OFFEST_WHEEL_X,
+                         -halfBody.y* car::OFFEST_WHEEL_Y });
 }
 
 void Car::draw(sf::RenderTarget& window, sf::RenderStates state)const
@@ -35,20 +74,20 @@ void Car::draw(sf::RenderTarget& window, sf::RenderStates state)const
 
   window.draw(m_whileL, state);
   window.draw(m_whileR, state);
-  window.draw(m_rCar, state);
+  window.draw(m_sprite, state);
 }
 
-void Car::update(float time)
+void Car::update(sf::Time time)
 {
-  centerWheel(time);
-  rotateLeft(time);
-  rotateRight(time);
+  centerWheel(time.asSeconds());
+  rotateLeft(time.asSeconds());
+  rotateRight(time.asSeconds());
   rotateWheels();
-  gas(time);
-  reverse(time);
-  brakes(time);
-  gravitySlow(time);
-  drive(time);
+  gas(time.asSeconds());
+  reverse(time.asSeconds());
+  brakes(time.asSeconds());
+  gravitySlow(time.asSeconds());
+  drive(time.asSeconds());
 }
 
 void Car::drive(float time)
@@ -56,15 +95,32 @@ void Car::drive(float time)
   if (!m_speed)
     return;
 
-  //(m_speed / car::CAR_MAX_SPEED) -> calculat the relative of speed using for how power the car turn
-  // by his speed also giv info about dir if speed negative this (m_angleWheel - car::WHEEL_CENTER)
-  // flip to (car::WHEEL_CENTER - m_angleWheel) and add to heading what we want if we goin back
-  m_heading += (m_angleWheel - car::WHEEL_CENTER) * time * (m_speed / car::CAR_MAX_SPEED);
+  sf::Vector2f halfBody{
+     m_sprite.getLocalBounds().size.x / 2.f * m_sprite.getScale().x,
+     m_sprite.getLocalBounds().size.y / 2.f * m_sprite.getScale().y
+  };
 
-  float posX = m_speed * time * std::cos((std::numbers::pi / 180) * m_heading);
-  float posY = m_speed * time * std::sin((std::numbers::pi / 180) * m_heading);
 
-  this->move({ -posX,-posY });
+  // use old heading
+  sf::Vector2f taileCar = {
+    getPosition().x + halfBody.x * static_cast<float>(std::cos((std::numbers::pi / 180) * m_heading)),
+    getPosition().y + halfBody.y * static_cast<float>(std::sin((std::numbers::pi / 180) * m_heading))
+  };
+
+  //m_heading += (m_angleWheel - car::WHEEL_CENTER) * time * (m_speed / car::CAR_MAX_SPEED);
+
+  m_heading += (m_speed / (halfBody.x*2.f*0.9f)) * tan((std::numbers::pi / 180) * m_angleWheel)* (180/std::numbers::pi) * time;
+  
+  taileCar.x -= m_speed * time * std::cos((std::numbers::pi / 180) * m_heading);
+  taileCar.y -= m_speed * time * std::sin((std::numbers::pi / 180) * m_heading);
+  
+  //use new heading
+  sf::Vector2f centerPos{
+    taileCar.x - halfBody.x * static_cast<float>(std::cos((std::numbers::pi / 180) * m_heading)),
+    taileCar.y - halfBody.y * static_cast<float>(std::sin((std::numbers::pi / 180) * m_heading))
+  };
+
+  this->setPosition(centerPos);
   this->setRotation(sf::degrees(m_heading));
 }
 

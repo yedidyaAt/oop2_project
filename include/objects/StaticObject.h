@@ -9,6 +9,9 @@ public:
                                     float fitSize,sf::Angle angle);
 
   void update(sf::Time time)override;
+  sf::FloatRect getGlobalBounds() const override;
+
+  std::array<sf::Vector2f, 4> getCorners() const override;
 
 protected:
   void draw(sf::RenderTarget& target, sf::RenderStates state)const override;

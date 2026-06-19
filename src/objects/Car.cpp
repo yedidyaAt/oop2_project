@@ -9,6 +9,7 @@
 #include "ObjectSizes.h"
 #include "KeyboardStrategy.h"
 #include "SpriteUtils.h"
+#include "Collision.h"
 
 #include <cmath>
 #include <numbers>
@@ -88,6 +89,18 @@ void Car::update(sf::Time time)
   brakes(time.asSeconds());
   gravitySlow(time.asSeconds());
   drive(time.asSeconds());
+}
+
+sf::FloatRect Car::getGlobalBounds() const
+{
+  sf::Transform combined =getTransform()* m_sprite.getTransform();
+  return combined.transformRect(m_sprite.getLocalBounds());
+}
+
+std::array<sf::Vector2f, 4> Car::getCorners() const
+{
+  sf::Transform combined = getTransform() * m_sprite.getTransform();
+  return collision::getGlobalePoints(m_sprite.getLocalBounds(),combined);
 }
 
 void Car::drive(float time)

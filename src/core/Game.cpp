@@ -10,6 +10,10 @@
 
 #include <iostream>
 
+
+#include "LevelManager.h"
+
+
 Game::Game() :
 	m_window(sf::VideoMode(sf::Vector2u{ display::WINDOW_WIDTH,display::WINDOW_HIEGHT }), "FACK FACE"),
 	m_timeLeft(0.f),
@@ -36,6 +40,10 @@ Game::Game() :
 
 void Game::run()
 {
+
+	LevelManager{ m_window, std::move(m_objects), std::move(m_car) }.run();
+
+
 	m_clock.restart();
 
 	sf::Color roudColor(40, 40, 40);
@@ -61,16 +69,8 @@ void Game::run()
 			event->visit([&](auto event) {handle(event);});
 		}
 
-		m_car->update(time);
-
 		m_window.clear(sf::Color::White);
 
-		for (const auto& obj : m_objects)
-		{
-			m_window.draw(*obj);
-		}
-
-		m_window.draw(*m_car);
 		m_window.display();
 	}
 

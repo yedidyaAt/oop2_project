@@ -10,6 +10,9 @@ public:
   virtual ~GameObject() = default;
 
   virtual void update(sf::Time time) = 0;
+  virtual sf::FloatRect getGlobalBounds() const= 0;
+
+  virtual std::array<sf::Vector2f, 4> getCorners() const = 0;
 
 protected:
   sf::Sprite m_sprite;

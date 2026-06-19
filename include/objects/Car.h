@@ -18,6 +18,9 @@ public:
   void draw(sf::RenderTarget& window, sf::RenderStates state)const override;
 
   void update(sf::Time time);  
+  sf::FloatRect getGlobalBounds() const;
+  std::array<sf::Vector2f, 4> getCorners() const override;
+
 private:
   void drive(float time);
   void gas(float time);

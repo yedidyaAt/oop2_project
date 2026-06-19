@@ -8,6 +8,8 @@
 #include "SpriteUtils.h"
 #include "ObjectSizes.h"
 
+#include "Collision.h"
+
 
 //=====================================
 //            REGISTERS
@@ -108,6 +110,16 @@ StaticObject::StaticObject(const sf::Texture& texture, const sf::Vector2f& pos,
 
 void StaticObject::update(sf::Time /*time*/)
 {
+}
+
+sf::FloatRect StaticObject::getGlobalBounds()const
+{
+    return m_sprite.getGlobalBounds();
+}
+
+std::array<sf::Vector2f, 4> StaticObject::getCorners() const
+{
+    return collision::getGlobalePoints(m_sprite.getLocalBounds(),m_sprite.getTransform());
 }
 
 void StaticObject::draw(sf::RenderTarget& target, sf::RenderStates state) const

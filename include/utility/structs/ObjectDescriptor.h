@@ -4,6 +4,7 @@
 
 struct ObjectDescriptor
 {
+  ObjectDescriptor() = default;
   ObjectDescriptor(Objects type, float x, float y,float angle) :
     m_type(type),
     m_x(x),

@@ -38,7 +38,7 @@ Car::Car(const sf::Texture& texture,
          sf::Angle angle,
          std::unique_ptr<ControlStrategy> control):
  
-  GameObject(texture,pos),
+  GameObject(texture,sf::Vector2f{}, true), // vec2F{} becouse we live at transform world
   m_control(std::move(control)),
   m_whileR(ResourceManager::getInstance().getTexture(Objects::WHEEL)),
   m_whileL(ResourceManager::getInstance().getTexture(Objects::WHEEL)),
@@ -47,7 +47,7 @@ Car::Car(const sf::Texture& texture,
   m_speed(0.f)
 {
   this->setRotation(angle);
-  this->setPosition({ 400.f,300.f });
+  this->setPosition(pos);
 
   spriteUtils::fitToSize(m_sprite, fitSize);
   m_sprite.setOrigin(m_sprite.getLocalBounds().size/2.f);
@@ -113,14 +113,11 @@ void Car::drive(float time)
      m_sprite.getLocalBounds().size.y / 2.f * m_sprite.getScale().y
   };
 
-
   // use old heading
   sf::Vector2f taileCar = {
     getPosition().x + halfBody.x * static_cast<float>(std::cos((std::numbers::pi / 180) * m_heading)),
     getPosition().y + halfBody.y * static_cast<float>(std::sin((std::numbers::pi / 180) * m_heading))
   };
-
-  //m_heading += (m_angleWheel - car::WHEEL_CENTER) * time * (m_speed / car::CAR_MAX_SPEED);
 
   m_heading += (m_speed / (halfBody.x*2.f*0.9f)) * tan((std::numbers::pi / 180) * m_angleWheel)* (180/std::numbers::pi) * time;
   

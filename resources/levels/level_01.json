@@ -1,4 +1,10 @@
 {
+  "car": {
+    "type": "player_car",
+    "x": 560,
+    "y": 300,
+    "rotation": 90
+  },
   "objects": [
     {
       "type": "wall",

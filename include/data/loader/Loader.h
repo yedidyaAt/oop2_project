@@ -4,7 +4,7 @@
 #include <fstream>
 
 
-#include "LevelData.h"
+#include "LevelDescriptor.h"
 
 
 class Loader
@@ -12,5 +12,5 @@ class Loader
 public:
   explicit Loader();
 
-  LevelData getData(const std::string& path)const;
+  LevelDescriptor getData(const std::string& path)const;
 };

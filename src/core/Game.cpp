@@ -11,7 +11,7 @@
 #include <iostream>
 
 
-#include "LevelManager.h"
+#include "LevelBuilder.h"
 
 
 Game::Game() :
@@ -19,29 +19,16 @@ Game::Game() :
 	m_timeLeft(0.f),
 	m_frameCount(0),
 	m_timeAccumulated(0),
-	m_car(std::make_unique<Car>(
-		ResourceManager::getInstance().getTexture(Objects::PLAYER_CAR),
-		sf::Vector2f{},
-		objectSizes::playerCar::WIDTH,
-		sf::degrees(90),
-		std::make_unique<KeyboardStrategy>())
-	)
+	m_levlelMangaer(m_window,std::move(LevelBuilder().buildLevel("resources/levels/level_01.json")))
 {
 	m_window.setFramerateLimit(60);
-
-	LevelData lD = m_loader.getData("resources/levels/level_01.json");
-
-	for (const auto& objData : lD.m_objects)
-	{
-		m_objects.emplace_back(factory::create(objData));
-	}
 
 }
 
 void Game::run()
 {
 
-	LevelManager{ m_window, std::move(m_objects), std::move(m_car) }.run();
+	m_levlelMangaer.run();
 
 
 	m_clock.restart();
@@ -69,7 +56,7 @@ void Game::run()
 			event->visit([&](auto event) {handle(event);});
 		}
 
-		m_window.clear(sf::Color::White);
+		m_window.clear(roudColor);
 
 		m_window.display();
 	}

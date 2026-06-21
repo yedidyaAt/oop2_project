@@ -9,12 +9,11 @@
 #include <iostream>
 
 
-LevelManager::LevelManager(sf::RenderWindow& window,
-	std::vector<std::unique_ptr<GameObject>> objects,
-	std::unique_ptr<GameObject> car) :
+LevelManager::LevelManager(sf::RenderWindow& window, LevelData levelData) :
 	m_window(window),
-	m_objects(std::move(objects)),
-  m_car(std::move(car))
+	m_car(std::move(levelData.m_car)),
+	m_blocksObj(std::move(levelData.m_blocksObj)),
+	m_decalsObj(std::move(levelData.m_decalsObj))
 {
 
 }
@@ -22,6 +21,8 @@ LevelManager::LevelManager(sf::RenderWindow& window,
 
 void LevelManager::run()
 {
+	sf::Color roudColor(40, 40, 40);
+
 	sf::Clock clock;
 
 	while (m_window.isOpen())
@@ -35,7 +36,7 @@ void LevelManager::run()
 
 		update(time);
 
-		m_window.clear(sf::Color::White);
+		m_window.clear(roudColor);
 		draw();
 		m_window.display();
 	}
@@ -51,7 +52,7 @@ void LevelManager::update(sf::Time time)
 
 void LevelManager::checkConflict()
 {
-	for (const auto& obj : m_objects)
+	for (const auto& obj : m_blocksObj)
 	{
 		if (collision::overlaps(m_car->getCorners(), obj->getCorners()))
 			std::cout << "got you son of a bitch" << std::endl;
@@ -62,7 +63,7 @@ void LevelManager::draw()
 {
 
 	//sf::RectangleShape objS, carS;
-	//for (const auto& obj : m_objects)
+	//for (const auto& obj : m_blocksObj)
 	//{
 	//	sf::FloatRect objF(obj->getGlobalBounds());
 	//	sf::FloatRect carF(m_car->getGlobalBounds());
@@ -82,7 +83,12 @@ void LevelManager::draw()
 	//}
 
 	// darw objects
-	for (const auto& obj : m_objects)
+	for (const auto& obj : m_decalsObj)
+	{
+		m_window.draw(*obj);
+	}
+
+	for (const auto& obj : m_blocksObj)
 	{
 		m_window.draw(*obj);
 	}

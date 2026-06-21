@@ -5,12 +5,13 @@
 #include <memory>
 
 #include "GameObject.h"
+#include "LevelData.h"
 
 
 class LevelManager
 {
 public:
-  LevelManager(sf::RenderWindow& window, std::vector<std::unique_ptr<GameObject>> objects, std::unique_ptr<GameObject> car);
+  LevelManager(sf::RenderWindow& window,LevelData levelData);
 
   void run();
 
@@ -26,10 +27,8 @@ private:
 
 
 
-
-
-
   sf::RenderWindow&                        m_window;
-  std::vector<std::unique_ptr<GameObject>> m_objects;
-  std::unique_ptr<GameObject>              m_car;
+  std::unique_ptr<GameObject>              m_car       = std::unique_ptr<GameObject>();
+  std::vector<std::unique_ptr<GameObject>> m_blocksObj = std::vector<std::unique_ptr<GameObject>>();
+  std::vector<std::unique_ptr<GameObject>> m_decalsObj = std::vector<std::unique_ptr<GameObject>>();
 };

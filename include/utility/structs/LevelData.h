@@ -1,11 +1,14 @@
 #pragma once
 
-#include "ObjectDescriptor.h"
-
 #include <vector>
+#include <memory>
+
+#include "GameObject.h"
+#include "Car.h"
 
 struct LevelData
 {
-  std::string m_nameLevel;
-  std::vector<ObjectDescriptor> m_objects;
+  std::vector<std::unique_ptr<GameObject>> m_blocksObj = std::vector<std::unique_ptr<GameObject>>();
+  std::vector<std::unique_ptr<GameObject>> m_decalsObj = std::vector<std::unique_ptr<GameObject>>();
+  std::unique_ptr<GameObject> m_car = std::unique_ptr<GameObject>();
 };

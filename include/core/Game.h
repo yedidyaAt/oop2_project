@@ -4,6 +4,7 @@
 
 #include "Loader.h"
 #include "GameObject.h"
+#include "LevelManager.h"
 
 #include <memory>
 
@@ -25,8 +26,6 @@ private:
   float            m_timeLeft;
   int              m_frameCount;
   float            m_timeAccumulated;
-  std::unique_ptr<Car> m_car;
 
-  Loader m_loader;
-  std::vector<std::unique_ptr<GameObject>> m_objects = std::vector<std::unique_ptr<GameObject>>();
+  LevelManager m_levlelMangaer;
 };

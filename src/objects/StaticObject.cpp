@@ -21,9 +21,10 @@ static const bool registeryWall = factory::registerCreator(
   [](const ObjectDescriptor& objDes)
   {
     return std::make_unique<StaticObject>(ResourceManager::getInstance().getTexture(Objects::WALL),
-                                                              sf::Vector2f{objDes.m_x, objDes.m_y},
-                                                                         objectSizes::wall::WIDTH,
-                                                                         sf::degrees(objDes.m_angle));
+      sf::Vector2f{ objDes.m_x, objDes.m_y },
+      objectSizes::wall::WIDTH,
+      sf::degrees(objDes.m_angle),
+      true);
   }
 );
 
@@ -33,9 +34,10 @@ static const bool registeryParkedCar = factory::registerCreator(
   [](const ObjectDescriptor& objDes)
   {
     return std::make_unique<StaticObject>(ResourceManager::getInstance().getTexture(Objects::PARKED_CAR),
-                                                                  sf::Vector2f{ objDes.m_x, objDes.m_y },
-                                                                           objectSizes::parkedCar::WIDTH,
-                                                                           sf::degrees(objDes.m_angle));
+      sf::Vector2f{ objDes.m_x, objDes.m_y },
+      objectSizes::parkedCar::WIDTH,
+      sf::degrees(objDes.m_angle),
+      true);
   }
 );
 
@@ -45,9 +47,10 @@ static const bool registeryParkingSpot = factory::registerCreator(
   [](const ObjectDescriptor& objDes)
   {
     return std::make_unique<StaticObject>(ResourceManager::getInstance().getTexture(Objects::PARKING_SPOT),
-                                                                    sf::Vector2f{ objDes.m_x, objDes.m_y },
-                                                                          objectSizes::parkingSpot::WIDTH,
-                                                                          sf::degrees(objDes.m_angle));
+      sf::Vector2f{ objDes.m_x, objDes.m_y },
+      objectSizes::parkingSpot::WIDTH,
+      sf::degrees(objDes.m_angle),
+      false);
   }
 );
 
@@ -57,9 +60,10 @@ static const bool registeryCone = factory::registerCreator(
   [](const ObjectDescriptor& objDes)
   {
     return std::make_unique<StaticObject>(ResourceManager::getInstance().getTexture(Objects::CONE),
-                                                            sf::Vector2f{ objDes.m_x, objDes.m_y },
-                                                                         objectSizes::cone::WIDTH,
-                                                                         sf::degrees(objDes.m_angle));
+      sf::Vector2f{ objDes.m_x, objDes.m_y },
+      objectSizes::cone::WIDTH,
+      sf::degrees(objDes.m_angle),
+      true);
   }
 );
 
@@ -69,9 +73,10 @@ static const bool registeryBarrier = factory::registerCreator(
   [](const ObjectDescriptor& objDes)
   {
     return std::make_unique<StaticObject>(ResourceManager::getInstance().getTexture(Objects::BARRIER),
-                                                               sf::Vector2f{ objDes.m_x, objDes.m_y },
-                                                                         objectSizes::barrier::WIDTH,
-                                                                         sf::degrees(objDes.m_angle));
+      sf::Vector2f{ objDes.m_x, objDes.m_y },
+      objectSizes::barrier::WIDTH,
+      sf::degrees(objDes.m_angle),
+      true);
   }
 );
 
@@ -81,9 +86,10 @@ static const bool registeryGrassIsland = factory::registerCreator(
   [](const ObjectDescriptor& objDes)
   {
     return std::make_unique<StaticObject>(ResourceManager::getInstance().getTexture(Objects::GRASS_ISLAND),
-                                                                    sf::Vector2f{ objDes.m_x, objDes.m_y },
-                                                                          objectSizes::grassIsland::WIDTH,
-                                                                          sf::degrees(objDes.m_angle));
+      sf::Vector2f{ objDes.m_x, objDes.m_y },
+      objectSizes::grassIsland::WIDTH,
+      sf::degrees(objDes.m_angle),
+      true);
   }
 );
 //=========== PARKING ==================
@@ -92,9 +98,10 @@ static const bool registryParking = factory::registerCreator(
   [](const ObjectDescriptor& objDes)
   {
     return std::make_unique<StaticObject>(ResourceManager::getInstance().getTexture(Objects::PARKING),
-                                                                    sf::Vector2f{ objDes.m_x, objDes.m_y },
-                                                                          objectSizes::parking::WIDTH,
-                                                                          sf::degrees(objDes.m_angle));
+      sf::Vector2f{ objDes.m_x, objDes.m_y },
+      objectSizes::parking::WIDTH,
+      sf::degrees(objDes.m_angle),
+      false);
   }
 );
 //=========== CROSSING ==================
@@ -103,9 +110,10 @@ static const bool registryCrossing = factory::registerCreator(
   [](const ObjectDescriptor& objDes)
   {
     return std::make_unique<StaticObject>(ResourceManager::getInstance().getTexture(Objects::CROSSING),
-                                                                    sf::Vector2f{ objDes.m_x, objDes.m_y },
-                                                                          objectSizes::crossing::WIDTH,
-                                                                          sf::degrees(objDes.m_angle));
+      sf::Vector2f{ objDes.m_x, objDes.m_y },
+      objectSizes::crossing::WIDTH,
+      sf::degrees(objDes.m_angle),
+      false);
   }
 );
 //=========== LANE_DIVIDER ==================
@@ -114,9 +122,10 @@ static const bool registryLaneDivider = factory::registerCreator(
   [](const ObjectDescriptor& objDes)
   {
     return std::make_unique<StaticObject>(ResourceManager::getInstance().getTexture(Objects::LANE_DIVIDER),
-                                                                    sf::Vector2f{ objDes.m_x, objDes.m_y },
-                                                                          objectSizes::laneDivider::WIDTH,
-                                                                          sf::degrees(objDes.m_angle));
+      sf::Vector2f{ objDes.m_x, objDes.m_y },
+      objectSizes::laneDivider::WIDTH,
+      sf::degrees(objDes.m_angle),
+      false);
   }
 );
 
@@ -128,9 +137,11 @@ static const bool registryLaneDivider = factory::registerCreator(
 
 
 
+
 StaticObject::StaticObject(const sf::Texture& texture, const sf::Vector2f& pos,
-                                                float fitSize, sf::Angle angle) :
-  GameObject(texture, pos)
+                                                float fitSize, sf::Angle angle,
+                                                bool block) :
+  GameObject(texture, pos,block)
 {
   spriteUtils::fitToSize(m_sprite, fitSize);
 

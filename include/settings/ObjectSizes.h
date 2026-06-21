@@ -10,4 +10,7 @@ namespace objectSizes
   namespace barrier { constexpr float WIDTH = 80.f; }
   namespace grassIsland { constexpr float WIDTH = 200.f; }
   namespace wheel { constexpr float WIDTH = 20.f; }
+  namespace parking { constexpr float WIDTH = 110.f; }
+  namespace crossing { constexpr float WIDTH = 95.f; }
+  namespace laneDivider { constexpr float WIDTH = 70.f; }
 }

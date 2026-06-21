@@ -86,6 +86,39 @@ static const bool registeryGrassIsland = factory::registerCreator(
                                                                           sf::degrees(objDes.m_angle));
   }
 );
+//=========== PARKING ==================
+static const bool registryParking = factory::registerCreator(
+  Objects::PARKING,
+  [](const ObjectDescriptor& objDes)
+  {
+    return std::make_unique<StaticObject>(ResourceManager::getInstance().getTexture(Objects::PARKING),
+                                                                    sf::Vector2f{ objDes.m_x, objDes.m_y },
+                                                                          objectSizes::parking::WIDTH,
+                                                                          sf::degrees(objDes.m_angle));
+  }
+);
+//=========== CROSSING ==================
+static const bool registryCrossing = factory::registerCreator(
+  Objects::CROSSING,
+  [](const ObjectDescriptor& objDes)
+  {
+    return std::make_unique<StaticObject>(ResourceManager::getInstance().getTexture(Objects::CROSSING),
+                                                                    sf::Vector2f{ objDes.m_x, objDes.m_y },
+                                                                          objectSizes::crossing::WIDTH,
+                                                                          sf::degrees(objDes.m_angle));
+  }
+);
+//=========== LANE_DIVIDER ==================
+static const bool registryLaneDivider = factory::registerCreator(
+  Objects::LANE_DIVIDER,
+  [](const ObjectDescriptor& objDes)
+  {
+    return std::make_unique<StaticObject>(ResourceManager::getInstance().getTexture(Objects::LANE_DIVIDER),
+                                                                    sf::Vector2f{ objDes.m_x, objDes.m_y },
+                                                                          objectSizes::laneDivider::WIDTH,
+                                                                          sf::degrees(objDes.m_angle));
+  }
+);
 
 //=====================================
 //           END REGISTERS

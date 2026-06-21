@@ -55,6 +55,30 @@
       "rotation": 0
     },
     {
+      "type": "wall",
+      "x": 900,
+      "y": 0,
+      "rotation": 0
+    },
+    {
+      "type": "wall",
+      "x": 1000,
+      "y": 0,
+      "rotation": 0
+    },
+    {
+      "type": "wall",
+      "x": 1100,
+      "y": 0,
+      "rotation": 0
+    },
+    {
+      "type": "wall",
+      "x": 1200,
+      "y": 0,
+      "rotation": 0
+    },
+    {
       "type": "barrier",
       "x": 60,
       "y": 30,
@@ -69,24 +93,6 @@
     {
       "type": "barrier",
       "x": 60,
-      "y": 190,
-      "rotation": 90
-    },
-    {
-      "type": "barrier",
-      "x": 700,
-      "y": 30,
-      "rotation": 90
-    },
-    {
-      "type": "barrier",
-      "x": 700,
-      "y": 110,
-      "rotation": 90
-    },
-    {
-      "type": "barrier",
-      "x": 700,
       "y": 190,
       "rotation": 90
     },
@@ -133,8 +139,20 @@
       "rotation": 0
     },
     {
+      "type": "grass_island",
+      "x": 950,
+      "y": 270,
+      "rotation": 0
+    },
+    {
+      "type": "grass_island",
+      "x": 1250,
+      "y": 270,
+      "rotation": 0
+    },
+    {
       "type": "parking_spot",
-      "x": 500,
+      "x": 700,
       "y": 30,
       "rotation": 0
     },
@@ -143,6 +161,228 @@
       "x": 120,
       "y": 470,
       "rotation": 0
+    },
+    {
+      "type": "parking",
+      "x": 400,
+      "y": 350,
+      "rotation": 0
+    },
+    {
+      "type": "parking",
+      "x": 550,
+      "y": 350,
+      "rotation": 0
+    },
+    {
+      "type": "parking",
+      "x": 700,
+      "y": 350,
+      "rotation": 0
+    },
+    {
+      "type": "parking",
+      "x": 850,
+      "y": 350,
+      "rotation": 0
+    },
+    {
+      "type": "parking",
+      "x": 1000,
+      "y": 350,
+      "rotation": 0
+    },
+    {
+      "type": "parking",
+      "x": 1150,
+      "y": 350,
+      "rotation": 0
+    },
+    {
+      "type": "crossing",
+      "x": 350,
+      "y": 20,
+      "rotation": 90
+    },
+    {
+      "type": "crossing",
+      "x": 350,
+      "y": 100,
+      "rotation": 90
+    },
+    {
+      "type": "crossing",
+      "x": 350,
+      "y": 180,
+      "rotation": 90
+    },
+    {
+      "type": "crossing",
+      "x": 120,
+      "y": 270,
+      "rotation": 0
+    },
+    {
+      "type": "lane_divider",
+      "x": 350,
+      "y": 200,
+      "rotation": 0
+    },
+    {
+      "type": "lane_divider",
+      "x": 420,
+      "y": 200,
+      "rotation": 0
+    },
+    {
+      "type": "lane_divider",
+      "x": 490,
+      "y": 200,
+      "rotation": 0
+    },
+    {
+      "type": "lane_divider",
+      "x": 560,
+      "y": 200,
+      "rotation": 0
+    },
+    {
+      "type": "lane_divider",
+      "x": 630,
+      "y": 200,
+      "rotation": 0
+    },
+    {
+      "type": "lane_divider",
+      "x": 700,
+      "y": 200,
+      "rotation": 0
+    },
+    {
+      "type": "lane_divider",
+      "x": 770,
+      "y": 200,
+      "rotation": 0
+    },
+    {
+      "type": "lane_divider",
+      "x": 840,
+      "y": 200,
+      "rotation": 0
+    },
+    {
+      "type": "lane_divider",
+      "x": 910,
+      "y": 200,
+      "rotation": 0
+    },
+    {
+      "type": "lane_divider",
+      "x": 980,
+      "y": 200,
+      "rotation": 0
+    },
+    {
+      "type": "lane_divider",
+      "x": 1050,
+      "y": 200,
+      "rotation": 0
+    },
+    {
+      "type": "lane_divider",
+      "x": 1120,
+      "y": 200,
+      "rotation": 0
+    },
+    {
+      "type": "lane_divider",
+      "x": 350,
+      "y": 100,
+      "rotation": 0
+    },
+    {
+      "type": "lane_divider",
+      "x": 420,
+      "y": 100,
+      "rotation": 0
+    },
+    {
+      "type": "lane_divider",
+      "x": 490,
+      "y": 100,
+      "rotation": 0
+    },
+    {
+      "type": "lane_divider",
+      "x": 560,
+      "y": 100,
+      "rotation": 0
+    },
+    {
+      "type": "lane_divider",
+      "x": 630,
+      "y": 100,
+      "rotation": 0
+    },
+    {
+      "type": "lane_divider",
+      "x": 700,
+      "y": 100,
+      "rotation": 0
+    },
+    {
+      "type": "lane_divider",
+      "x": 770,
+      "y": 100,
+      "rotation": 0
+    },
+    {
+      "type": "lane_divider",
+      "x": 840,
+      "y": 100,
+      "rotation": 0
+    },
+    {
+      "type": "lane_divider",
+      "x": 910,
+      "y": 100,
+      "rotation": 0
+    },
+    {
+      "type": "lane_divider",
+      "x": 980,
+      "y": 100,
+      "rotation": 0
+    },
+    {
+      "type": "lane_divider",
+      "x": 1050,
+      "y": 100,
+      "rotation": 0
+    },
+    {
+      "type": "lane_divider",
+      "x": 1120,
+      "y": 100,
+      "rotation": 0
+    },
+    {
+      "type": "barrier",
+      "x": 900,
+      "y": 30,
+      "rotation": 90
+    },
+    {
+      "type": "barrier",
+      "x": 900,
+      "y": 110,
+      "rotation": 90
+    },
+    {
+      "type": "barrier",
+      "x": 900,
+      "y": 190,
+      "rotation": 90
     }
   ]
 }

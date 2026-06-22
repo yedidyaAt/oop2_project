@@ -3,7 +3,7 @@
 #include <utility>
 
 #include "Collision.h"
-
+#include "ParkingRules.h"
 
 
 #include <iostream>
@@ -12,6 +12,7 @@
 LevelManager::LevelManager(sf::RenderWindow& window, LevelData levelData) :
 	m_window(window),
 	m_car(std::move(levelData.m_car)),
+	m_target(std::move(levelData.m_target)),
 	m_blocksObj(std::move(levelData.m_blocksObj)),
 	m_decalsObj(std::move(levelData.m_decalsObj))
 {
@@ -48,6 +49,7 @@ void LevelManager::update(sf::Time time)
 	m_car->update(time);
 
 	checkConflict();
+	checkParking();
 }
 
 void LevelManager::checkConflict()
@@ -57,6 +59,14 @@ void LevelManager::checkConflict()
 		if (collision::overlaps(m_car->getCorners(), obj->getCorners()))
 			std::cout << "got you son of a bitch" << std::endl;
 	}
+}
+
+void LevelManager::checkParking()
+{
+	if (m_car->isStand() && parkingRules::isParked(*m_car, *m_target))
+		std::cout << "his parking mader facker" << std::endl;
+
+
 }
 
 void LevelManager::draw()
@@ -93,11 +103,14 @@ void LevelManager::draw()
 		m_window.draw(*obj);
 	}
 
+	// draw the parking spot
+	m_window.draw(*m_target);
+
 	// draw car
 	m_window.draw(*m_car);
 }
 
-void LevelManager::handle(sf::Event::Closed& closed)
+void LevelManager::handle(sf::Event::Closed& /*closed*/)
 {
 	m_window.close();
 }

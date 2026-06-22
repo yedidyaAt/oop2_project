@@ -17,7 +17,10 @@ LevelData LevelBuilder::buildLevel(const std::string& path) const
   LevelData levelData;
   
   //============= BUILD CAR ===================
-  levelData.m_car = factory::create(LevelDes.m_car);
+  levelData.m_car = castFromGameObject(factory::create(LevelDes.m_car));
+
+  //============= BUILD TARGET ===================
+  levelData.m_target = factory::create(LevelDes.m_target);
 
   //============= BUILD OBJECTS ===================
   for (auto& objDes : LevelDes.m_objects)
@@ -32,4 +35,18 @@ LevelData LevelBuilder::buildLevel(const std::string& path) const
   
 
   return levelData;
+}
+
+std::unique_ptr<Car> LevelBuilder::castFromGameObject(std::unique_ptr<GameObject> obj) const
+{
+  Car* carPtr = dynamic_cast<Car*>(obj.get());
+
+  if (carPtr)
+  {
+    return std::unique_ptr<Car>(static_cast<Car*>(obj.release()));
+  }
+  else
+  {
+    throw std::runtime_error("LevelBuilder error: Player car is not of type Car!");
+  }
 }

@@ -15,11 +15,14 @@ public:
                   std::unique_ptr<ControlStrategy> control);
 
     
+  void update(sf::Time time);  
   void draw(sf::RenderTarget& window, sf::RenderStates state)const override;
 
-  void update(sf::Time time);  
-  sf::FloatRect getGlobalBounds() const;
+  sf::FloatRect getGlobalBounds() const override;
   std::array<sf::Vector2f, 4> getCorners() const override;
+  sf::Angle getAngle()const override;
+
+  bool isStand()const;
 
 private:
   void drive(float time);

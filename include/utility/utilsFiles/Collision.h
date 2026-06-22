@@ -9,4 +9,5 @@ namespace collision
 
   bool overlaps(const std::array<sf::Vector2f, 4>& a,
                 const std::array<sf::Vector2f, 4>& b);
+
 }

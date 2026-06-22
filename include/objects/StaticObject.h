@@ -13,6 +13,8 @@ public:
   sf::FloatRect getGlobalBounds() const override;
 
   std::array<sf::Vector2f, 4> getCorners() const override;
+  sf::Angle getAngle()const override;
+
 
 protected:
   void draw(sf::RenderTarget& target, sf::RenderStates state)const override;

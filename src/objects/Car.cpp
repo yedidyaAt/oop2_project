@@ -103,6 +103,16 @@ std::array<sf::Vector2f, 4> Car::getCorners() const
   return collision::getGlobalePoints(m_sprite.getLocalBounds(),combined);
 }
 
+sf::Angle Car::getAngle() const
+{
+    return sf::degrees(m_heading);
+}
+
+bool Car::isStand() const
+{
+    return !m_speed;
+}
+
 void Car::drive(float time)
 {
   if (!m_speed)

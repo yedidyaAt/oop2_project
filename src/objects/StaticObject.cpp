@@ -166,6 +166,11 @@ std::array<sf::Vector2f, 4> StaticObject::getCorners() const
     return collision::getGlobalePoints(m_sprite.getLocalBounds(),m_sprite.getTransform());
 }
 
+sf::Angle StaticObject::getAngle() const
+{
+    return m_sprite.getRotation();
+}
+
 void StaticObject::draw(sf::RenderTarget& target, sf::RenderStates state) const
 {
   target.draw(m_sprite, state);

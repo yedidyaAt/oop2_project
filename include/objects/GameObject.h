@@ -13,6 +13,7 @@ public:
   virtual sf::FloatRect getGlobalBounds() const= 0;
 
   virtual std::array<sf::Vector2f, 4> getCorners() const = 0;
+  virtual sf::Angle getAngle()const = 0;
 
   bool isBlocks()const;
 protected:

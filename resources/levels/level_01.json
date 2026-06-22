@@ -5,6 +5,12 @@
     "y": 300,
     "rotation": 90
   },
+  "target": {
+    "type": "parking_spot",
+    "x": 700,
+    "y": 30,
+    "rotation": 0
+  },
   "objects": [
     {
       "type": "wall",
@@ -154,12 +160,6 @@
       "type": "grass_island",
       "x": 1250,
       "y": 270,
-      "rotation": 0
-    },
-    {
-      "type": "parking_spot",
-      "x": 700,
-      "y": 30,
       "rotation": 0
     },
     {

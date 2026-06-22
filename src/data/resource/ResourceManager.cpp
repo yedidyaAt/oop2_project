@@ -47,6 +47,21 @@ void ResourceManager::load() {
   if (!m_textures[Objects::LANE_DIVIDER].loadFromFile(AssetPaths::Objects::LANE_DIVIDER)) {
     throw std::runtime_error("Failed to load texture: " + AssetPaths::Objects::LANE_DIVIDER);
   }
+
+  //Sound
+  if (!m_sound[Sounds::CLICING_BUTTON].loadFromFile(AssetPaths::Sounds::CLICING_BUTTON)) {
+      throw std::runtime_error("Failed to load Sound: " + AssetPaths::Sounds::CLICING_BUTTON);
+  }
+  if (!m_sound[Sounds::COLLISION].loadFromFile(AssetPaths::Sounds::COLLISION)) {
+      throw std::runtime_error("Failed to load Sound: " + AssetPaths::Sounds::COLLISION);
+  } 
+  if (!m_sound[Sounds::END_OF_GAME].loadFromFile(AssetPaths::Sounds::END_OF_GAME)) {
+      throw std::runtime_error("Failed to load Sound: " + AssetPaths::Sounds::END_OF_GAME);
+  } 
+  if (!m_sound[Sounds::END_OF_STAGE].loadFromFile(AssetPaths::Sounds::END_OF_STAGE)) {
+      throw std::runtime_error("Failed to load Sound: " + AssetPaths::Sounds::END_OF_STAGE);
+  }
+
 }
 
 const sf::Texture& ResourceManager::getTexture(const Objects& key) {
@@ -57,3 +72,16 @@ const sf::Texture& ResourceManager::getTexture(const Objects& key) {
 
   throw std::runtime_error("Texture not found for requested key");
 }
+
+
+const sf::SoundBuffer& ResourceManager::getSound(const Sounds& key) {
+  auto it = m_sound.find(key);
+  if (it != m_sound.end()) {
+    return it->second;
+  }
+
+  throw std::runtime_error("Sounds not found for requested key");
+}
+
+
+

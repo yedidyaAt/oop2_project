@@ -21,7 +21,22 @@ namespace AssetPaths {
     inline const std::string WHEEL = IMAGES_DIR + "wheel.png";
   }
 
-  // בעתיד תוסיף בלוקים נוספים, לדוגמה:
   // namespace Fonts { inline const std::string MAIN = "resources/fonts/main.ttf"; }
-  // namespace Sounds { inline const std::string ENGINE = "resources/sounds/engine.wav"; }
+  inline const std::string SOUND_DIR = "resources/images/sounds/";
+
+  namespace Sounds {
+      inline const std::string CLICING_BUTTON = SOUND_DIR + "Clicking_a_button.wav";
+      inline const std::string COLLISION = SOUND_DIR + "collision.wav";
+      inline const std::string END_OF_GAME = SOUND_DIR + "end_of_game.wav";
+      inline const std::string END_OF_STAGE = SOUND_DIR + "end_of_stage.wav";
+  }
+
+  inline const std::string MUSIC_DIR = "resources/images/music/";
+
+  namespace Musics {
+      inline const std::string GAME = MUSIC_DIR + "game.wav";
+      inline const std::string OPENING = MUSIC_DIR + "opening.mp3";
+  }
+
+
 }

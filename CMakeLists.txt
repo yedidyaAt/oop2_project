@@ -21,9 +21,9 @@ include (cmake/Zip.cmake)
 set (SFML_LOCATION "C:/SFML/SFML-3.0.0")
 set (SFML_DIR "${SFML_LOCATION}/lib/cmake/SFML")
 
-find_package (SFML 3.0 COMPONENTS Graphics Main REQUIRED)
+find_package (SFML 3.0 COMPONENTS Graphics Audio Main REQUIRED)
 
-target_link_libraries (${CMAKE_PROJECT_NAME} SFML::Graphics SFML::Main)
+target_link_libraries (${CMAKE_PROJECT_NAME} SFML::Graphics SFML::Audio SFML::Main)
 
 include (cmake/SFML.cmake)
 

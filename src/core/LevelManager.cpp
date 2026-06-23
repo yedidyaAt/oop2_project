@@ -4,6 +4,9 @@
 
 #include "Collision.h"
 #include "ParkingRules.h"
+#include "SoundManager.h"
+#include "Sounds.h"
+#include "Musics.h"
 
 
 #include <iostream>
@@ -16,7 +19,8 @@ LevelManager::LevelManager(sf::RenderWindow& window, LevelData levelData) :
 	m_blocksObj(std::move(levelData.m_blocksObj)),
 	m_decalsObj(std::move(levelData.m_decalsObj))
 {
-
+	SoundManager::getInstance().playMusic(Musics::OPENING);
+	SoundManager::getInstance().playEffectSound(Sounds::COLLISION);
 }
 
 
@@ -57,7 +61,10 @@ void LevelManager::checkConflict()
 	for (const auto& obj : m_blocksObj)
 	{
 		if (collision::overlaps(m_car->getCorners(), obj->getCorners()))
+		{
+			//SoundManager::getInstance().playEffectSound(Sounds::COLLISION);
 			std::cout << "got you son of a bitch" << std::endl;
+		}
 	}
 }
 

@@ -22,7 +22,7 @@ namespace AssetPaths {
   }
 
   // namespace Fonts { inline const std::string MAIN = "resources/fonts/main.ttf"; }
-  inline const std::string SOUND_DIR = "resources/images/sounds/";
+  inline const std::string SOUND_DIR = "resources/sounds/";
 
   namespace Sounds {
       inline const std::string CLICING_BUTTON = SOUND_DIR + "Clicking_a_button.wav";
@@ -31,11 +31,11 @@ namespace AssetPaths {
       inline const std::string END_OF_STAGE = SOUND_DIR + "end_of_stage.wav";
   }
 
-  inline const std::string MUSIC_DIR = "resources/images/music/";
+  inline const std::string MUSIC_DIR = "resources/music/";
 
   namespace Musics {
       inline const std::string GAME = MUSIC_DIR + "game.wav";
-      inline const std::string OPENING = MUSIC_DIR + "opening.mp3";
+      inline const std::string OPENING = MUSIC_DIR + "opening.wav";
   }
 
 

@@ -18,7 +18,8 @@ LevelManager::LevelManager(sf::RenderWindow& window, LevelData levelData) :
 	m_blocksObj(std::move(levelData.m_blocksObj)),
 	m_decalsObj(std::move(levelData.m_decalsObj))
 {
-	SoundManager::getInstance().playMusic(Musics::GAME);
+	SoundManager::getInstance().playMusic(Musics::OPENING);
+	SoundManager::getInstance().playEffectSound(Sounds::COLLISION);
 }
 
 

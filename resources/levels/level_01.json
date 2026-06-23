@@ -1,8 +1,8 @@
 {
   "car": {
     "type": "player_car",
-    "x": 560,
-    "y": 300,
+    "x": 120,
+    "y": 470,
     "rotation": 90
   },
   "target": {
@@ -164,8 +164,8 @@
     },
     {
       "type": "parked_car",
-      "x": 120,
-      "y": 470,
+      "x": 400,
+      "y": 350,
       "rotation": 0
     },
     {

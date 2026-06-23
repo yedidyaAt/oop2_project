@@ -7,6 +7,8 @@
 #include "GameObject.h"
 #include "LevelData.h"
 
+// LevelManager.h
+enum class LevelState { Playing, Won, LOST };
 
 class LevelManager
 {
@@ -33,4 +35,6 @@ private:
   std::unique_ptr<GameObject>              m_target       = std::unique_ptr<GameObject>();
   std::vector<std::unique_ptr<GameObject>> m_blocksObj    = std::vector<std::unique_ptr<GameObject>>();
   std::vector<std::unique_ptr<GameObject>> m_decalsObj    = std::vector<std::unique_ptr<GameObject>>();
+  LevelState                               m_state;
+  sf::RectangleShape         m_shapeMSG;
 };

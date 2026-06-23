@@ -23,8 +23,8 @@ namespace car
   constexpr float WHEEL_CENTER = 0.f;
 
   // how far the wheels can turn to each side
-  constexpr float WHEEL_MAX_LEFT = 50.f;
-  constexpr float WHEEL_MAX_RIGHT = -50.f;
+  constexpr float WHEEL_MAX_LEFT = 45.f;
+  constexpr float WHEEL_MAX_RIGHT = -45.f;
 
   // if the wheel is this close to center, snap it to center
   constexpr float WHEEL_SNAP = 0.9f;

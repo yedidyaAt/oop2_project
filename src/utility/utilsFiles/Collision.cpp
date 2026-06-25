@@ -58,7 +58,7 @@ namespace collision
 
 }
 
-std::array<sf::Vector2f,4> collision::getGlobalePoints(const sf::FloatRect& rec,
+std::array<sf::Vector2f,4> collision::getGlobalPoints(const sf::FloatRect& rec,
                                                        const sf::Transform& trans)
 {
   std::array<sf::Vector2f,4> points
@@ -73,7 +73,7 @@ std::array<sf::Vector2f,4> collision::getGlobalePoints(const sf::FloatRect& rec,
   {
     points[i] = trans.transformPoint(points[i]);
   }
-  
+
 
   return points;
 }
@@ -86,11 +86,10 @@ bool collision::overlaps(const std::array<sf::Vector2f, 4>& recA, const std::arr
   {
     const auto projection1 = getProjection(axis, recA);
     const auto projection2 = getProjection(axis, recB);
-  
+
     if (!overlap(projection1, projection2))
       return false;
   }
 
   return true;
 }
-

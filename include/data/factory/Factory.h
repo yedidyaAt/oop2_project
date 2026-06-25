@@ -18,8 +18,3 @@ namespace factory
 
   std::unique_ptr<GameObject> create(const ObjectDescriptor& objD);
 }
-
-
-
-
-

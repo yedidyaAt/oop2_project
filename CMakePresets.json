@@ -29,27 +29,9 @@
     }
   ],
   "buildPresets": [
-    {
-      "name": "x64-Debug",
-      "configurePreset": "x64-Debug"
-    },
-    {
-      "name": "x64-Release",
-      "configurePreset": "x64-Release"
-    },
-    {
-      "name": "Zip",
-      "configurePreset": "x64-Debug",
-      "targets": [
-        "Zip"
-      ]
-    },
-    {
-      "name": "ZipBackup",
-      "configurePreset": "x64-Debug",
-      "targets": [
-        "ZipBackup"
-      ]
-    }
+    { "name": "x64-Debug",   "configurePreset": "x64-Debug" },
+    { "name": "x64-Release", "configurePreset": "x64-Release" },
+    { "name": "Zip",         "configurePreset": "x64-Debug", "targets": ["Zip"] },
+    { "name": "ZipBackup",   "configurePreset": "x64-Debug", "targets": ["ZipBackup"] }
   ]
 }

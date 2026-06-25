@@ -6,11 +6,11 @@ namespace car
   constexpr float CAR_SPEED_DRIVE = 250.f;
   constexpr float CAR_ACCELERATION = 100.f;
   constexpr float CAR_MAX_SPEED = 300.f;
-  constexpr float CAR_GRAVITY = 10.f;
+  constexpr float CAR_GRAVITY = 35.f;
   constexpr float CAR_BRAKES = 200.f;
 
-  constexpr float OFFEST_WHEEL_X = 0.6f;
-  constexpr float OFFEST_WHEEL_Y = 0.75f;
+  constexpr float OFFSET_WHEEL_X = 0.6f;
+  constexpr float OFFSET_WHEEL_Y = 0.75f;
 
 
   // how fast the wheels turn (degrees per second)

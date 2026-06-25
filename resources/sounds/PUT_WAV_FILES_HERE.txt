@@ -1,0 +1,2 @@
+Drop the WAV sound effects here. Required exact filenames:
+  Clicking_a_button.wav, collision.wav, end_of_game.wav, end_of_stage.wav

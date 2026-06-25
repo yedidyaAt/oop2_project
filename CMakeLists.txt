@@ -26,4 +26,3 @@ find_package (SFML 3.0 COMPONENTS Graphics Audio Main REQUIRED)
 target_link_libraries (${CMAKE_PROJECT_NAME} SFML::Graphics SFML::Audio SFML::Main)
 
 include (cmake/SFML.cmake)
-

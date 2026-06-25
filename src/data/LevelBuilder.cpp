@@ -15,7 +15,7 @@ LevelData LevelBuilder::buildLevel(const std::string& path) const
   //===== START AT BUILD&SORT INTO LEVEL DATA ===
   //=============================================
   LevelData levelData;
-  
+
   //============= BUILD CAR ===================
   levelData.m_car = castFromGameObject(factory::create(LevelDes.m_car));
 
@@ -32,7 +32,7 @@ LevelData LevelBuilder::buildLevel(const std::string& path) const
     else
       levelData.m_decalsObj.emplace_back(std::move(obj));
   }
-  
+
 
   return levelData;
 }

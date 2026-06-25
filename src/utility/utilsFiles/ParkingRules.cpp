@@ -12,7 +12,7 @@ namespace parkingRules
 
     return angle;
   }
-    
+
   static bool anglesAligned(sf::Angle carAngle, sf::Angle targetAngle)
   {
     const auto subtractAngle = (carAngle - targetAngle).wrapSigned();
@@ -36,7 +36,7 @@ namespace parkingRules
     sf::Vector2f vec = centerR - centerL;
 
     // Compare squared distance to avoid sqrt; equivalent to length <= DISTANCE_OFFSET.
-    return vec.lengthSquared() <= parkingRules::DISTANCE_OFFSET* parkingRules::DISTANCE_OFFSET; 
+    return vec.lengthSquared() <= parkingRules::DISTANCE_OFFSET* parkingRules::DISTANCE_OFFSET;
   }
 }
 

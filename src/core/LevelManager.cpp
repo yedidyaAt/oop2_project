@@ -6,130 +6,84 @@
 #include "ParkingRules.h"
 #include "SoundManager.h"
 #include "Sounds.h"
-#include "Musics.h"
-
-
-#include <iostream>
-
+#include "DisplaySettings.h"
 
 LevelManager::LevelManager(sf::RenderWindow& window, LevelData levelData) :
-	m_window(window),
-	m_car(std::move(levelData.m_car)),
-	m_target(std::move(levelData.m_target)),
-	m_blocksObj(std::move(levelData.m_blocksObj)),
-	m_decalsObj(std::move(levelData.m_decalsObj)),
-	m_state(LevelState::Playing),
-	m_shapeMSG({200.f,200.f})
+  m_window(window),
+  m_car(std::move(levelData.m_car)),
+  m_target(std::move(levelData.m_target)),
+  m_blocksObj(std::move(levelData.m_blocksObj)),
+  m_decalsObj(std::move(levelData.m_decalsObj)),
+  m_state(LevelState::Playing)
 {
-	//SoundManager::getInstance().playMusic(Musics::OPENING);
+  buildView();
+  m_timer.reset();
 }
 
- 
-void LevelManager::run()
+void LevelManager::buildView()
 {
-	sf::Color roudColor(40, 40, 40);
+  m_worldView.setSize({ static_cast<float>(display::WINDOW_WIDTH),
+                        static_cast<float>(display::WINDOW_HEIGHT) });
+  m_worldView.setCenter({ static_cast<float>(display::WINDOW_WIDTH) / 2.f,
+                          static_cast<float>(display::WINDOW_HEIGHT) / 2.f });
+}
 
-	sf::Clock clock;
-
-	while (m_window.isOpen())
-	{
-		sf::Time time = clock.restart();
-
-		while (const auto event = m_window.pollEvent())
-		{
-			event->visit([&](auto event) {handle(event);});
-		}
-
-		if(m_state == LevelState::Playing)
-			update(time);
-
-		m_window.clear(roudColor);
-		draw();
-		m_window.display();
-	}
-
+void LevelManager::handleEvent(const sf::Event& /*event*/)
+{
+  // Driving is polled in Car via the control strategy; nothing per-event here.
 }
 
 void LevelManager::update(sf::Time time)
 {
-	m_car->update(time);
+  if (m_state != LevelState::Playing)
+    return;
 
-	checkConflict();
-	checkParking();
+  m_timer.tick(time);
+  m_car->update(time);
+
+  checkConflict();
+  checkParking();
+
+  m_hud.setElapsed(m_timer.elapsedSeconds());
 }
 
 void LevelManager::checkConflict()
 {
-	for (const auto& obj : m_blocksObj)
-	{
-		if (collision::overlaps(m_car->getCorners(), obj->getCorners()))
-		{
-			SoundManager::getInstance().playEffectSound(Sounds::COLLISION);
-			std::cout << "got you son of a bitch" << std::endl;
-			m_shapeMSG.setFillColor(sf::Color::Blue);
-			m_state = LevelState::LOST;
-		}
-	}
+  for (const auto& obj : m_blocksObj)
+  {
+    if (collision::overlaps(m_car->getCorners(), obj->getCorners()))
+    {
+      SoundManager::getInstance().playEffectSound(Sounds::COLLISION);
+      m_state = LevelState::Lost;   // any collision = immediate loss
+      return;
+    }
+  }
 }
-		
 
 void LevelManager::checkParking()
 {
-	if (m_car->isStand() && parkingRules::isParked(*m_car, *m_target))
-	{
-		SoundManager::getInstance().playEffectSound(Sounds::END_OF_STAGE);
-		std::cout << "his parking mader facker" << std::endl;
-		m_shapeMSG.setFillColor(sf::Color::Green);
-		m_state = LevelState::Won;
-	}
-
+  if (m_car->isStand() && parkingRules::isParked(*m_car, *m_target))
+  {
+    SoundManager::getInstance().playEffectSound(Sounds::END_OF_STAGE);
+    m_state = LevelState::Won;
+  }
 }
 
 void LevelManager::draw()
 {
+  m_window.setView(m_worldView);
 
-	//sf::RectangleShape objS, carS;
-	//for (const auto& obj : m_blocksObj)
-	//{
-	//	sf::FloatRect objF(obj->getGlobalBounds());
-	//	sf::FloatRect carF(m_car->getGlobalBounds());
-	//
-	//	objS.setFillColor(sf::Color::Black);
-	//	objS.setOutlineColor(sf::Color::Blue);
-	//	objS.setPosition(objF.position);
-	//	objS.setSize(objF.size);
-	//
-	//	carS.setFillColor(sf::Color::Yellow);
-	//	carS.setOutlineColor(sf::Color::Blue);
-	//	carS.setPosition(carF.position);
-	//	carS.setSize(carF.size);
-	//
-	//	m_window.draw(objS);
-	//	m_window.draw(carS);
-	//}
+  for (const auto& obj : m_decalsObj)
+    m_window.draw(*obj);
+  for (const auto& obj : m_blocksObj)
+    m_window.draw(*obj);
+  m_window.draw(*m_target);
+  m_window.draw(*m_car);
 
-	// darw objects
-	for (const auto& obj : m_decalsObj)
-	{
-		m_window.draw(*obj);
-	}
-
-	for (const auto& obj : m_blocksObj)
-	{
-		m_window.draw(*obj);
-	}
-
-	// draw the parking spot
-	m_window.draw(*m_target);
-
-	// draw car
-	m_window.draw(*m_car);
-
-	if (m_state != LevelState::Playing)
-		m_window.draw(m_shapeMSG);
+  // HUD in screen space
+  m_window.setView(m_window.getDefaultView());
+  m_hud.draw(m_window);
 }
 
-void LevelManager::handle(sf::Event::Closed& /*closed*/)
-{
-	m_window.close();
-}
+LevelState LevelManager::state() const { return m_state; }
+float LevelManager::elapsedSeconds() const { return m_timer.elapsedSeconds(); }

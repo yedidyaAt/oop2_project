@@ -31,13 +31,13 @@ LevelDescriptor Loader::getData(const std::string& path)const
     const auto carDes = jFile.at("car");
     Objects typeCarObj = objectUtils::getObjectConversionByStr(carDes.at("type").get<std::string>());
 
-    levelDes.m_car = { 
+    levelDes.m_car = {
       typeCarObj,
       carDes.at("x").get<float>(),
       carDes.at("y").get<float>(),
-      carDes.value("rotation", 0.0f) 
+      carDes.value("rotation", 0.0f)
     };
-    
+
     //========= LOAD TARGET(PARKING SPOT) ==========
     const auto targetDes = jFile.at("target");
     Objects typeTargetObj = objectUtils::getObjectConversionByStr(targetDes.at("type").get<std::string>());
@@ -48,7 +48,7 @@ LevelDescriptor Loader::getData(const std::string& path)const
       targetDes.at("y").get<float>(),
       targetDes.value("rotation", 0.0f)
     };
-  
+
     //========= LOAD OTHER OBJECTS ==========
     for (const auto& obj : jFile.at("objects"))
     {
@@ -67,6 +67,5 @@ LevelDescriptor Loader::getData(const std::string& path)const
     throw std::runtime_error(std::string(path) + e.what());
   }
 
-  return levelDes;// do the optemize auto 
+  return levelDes;
 }
-

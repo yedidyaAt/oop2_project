@@ -145,7 +145,7 @@ StaticObject::StaticObject(const sf::Texture& texture, const sf::Vector2f& pos,
 {
   spriteUtils::fitToSize(m_sprite, fitSize);
 
-  //origin 
+  //origin
   m_sprite.setOrigin(sf::Vector2f(m_sprite.getLocalBounds().size/2.f));
 
   m_sprite.setRotation(angle);
@@ -163,7 +163,7 @@ sf::FloatRect StaticObject::getGlobalBounds()const
 
 std::array<sf::Vector2f, 4> StaticObject::getCorners() const
 {
-    return collision::getGlobalePoints(m_sprite.getLocalBounds(),m_sprite.getTransform());
+    return collision::getGlobalPoints(m_sprite.getLocalBounds(),m_sprite.getTransform());
 }
 
 sf::Angle StaticObject::getAngle() const

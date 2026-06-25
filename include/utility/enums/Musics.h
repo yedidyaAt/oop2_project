@@ -2,6 +2,7 @@
 
 enum class Musics
 {
-	GAME,
-	OPENING
+  GAME,
+  OPENING,
+  CREDITS
 };

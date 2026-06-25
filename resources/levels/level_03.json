@@ -1,0 +1,11 @@
+{
+  "car":    { "type": "player_car",   "x": 150, "y": 120, "rotation": 0 },
+  "target": { "type": "parking_spot", "x": 950, "y": 480, "rotation": 0 },
+  "objects": [
+    { "type": "barrier", "x": 500, "y": 150, "rotation": 0 },
+    { "type": "barrier", "x": 500, "y": 250, "rotation": 0 },
+    { "type": "barrier", "x": 500, "y": 350, "rotation": 0 },
+    { "type": "parked_car", "x": 800, "y": 480, "rotation": 0 },
+    { "type": "parked_car", "x": 1100, "y": 480, "rotation": 0 }
+  ]
+}

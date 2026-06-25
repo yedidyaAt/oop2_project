@@ -1,0 +1,6 @@
+Drop the UI PNG files here (exact names, transparent background where noted):
+  menu_bg.png      - main menu / help background (any size, will cover-fit)
+  levels_bg.png    - level select background
+  star_filled.png  - filled star (transparent bg)
+  star_empty.png   - empty/outline star (transparent bg)
+  lock.png         - padlock icon for locked levels (transparent bg)

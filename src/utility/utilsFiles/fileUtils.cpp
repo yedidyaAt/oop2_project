@@ -1,4 +1,4 @@
-#include "Fileutils.h"
+#include "FileUtils.h"
 
 std::ifstream fileUtils::openForReading(const std::string& path)
 {
@@ -9,5 +9,5 @@ std::ifstream fileUtils::openForReading(const std::string& path)
     throw std::runtime_error(std::string("file not found ") + path);
   }
 
-  return file; // do the optemize auto 
+  return file;
 }

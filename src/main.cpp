@@ -1,12 +1,11 @@
-#include<iostream>
+#include <iostream>
 
-#include "Game.h"
+#include "core/Game.h"
 #include "ResourceManager.h"
 
-int main() try{
+int main() try {
   ResourceManager::getInstance().load();
   Game().run();
-
 }
 catch (const std::exception& e)
 {

@@ -1,0 +1,3 @@
+Drop the WAV music here (exact names):
+  game.wav     - in-game music
+  opening.wav  - menu / help / credits music

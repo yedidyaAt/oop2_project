@@ -1,0 +1,4 @@
+Drop the PNG image files here. Required exact filenames:
+  car_player.png, parking_car.png, parking_spot.png, wall.png, cone.png,
+  barrier.png, ground.png, grass_island.png, parking.png, crossing.png,
+  lane_divider.png, wheel.png

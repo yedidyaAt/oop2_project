@@ -1,0 +1,10 @@
+{
+  "car":    { "type": "player_car",   "x": 150, "y": 480, "rotation": 90 },
+  "target": { "type": "parking_spot", "x": 560, "y": 120, "rotation": 0 },
+  "objects": [
+    { "type": "grass_island", "x": 300, "y": 300, "rotation": 0 },
+    { "type": "grass_island", "x": 800, "y": 300, "rotation": 0 },
+    { "type": "cone", "x": 450, "y": 200, "rotation": 0 },
+    { "type": "cone", "x": 670, "y": 200, "rotation": 0 }
+  ]
+}

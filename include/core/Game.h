@@ -1,31 +1,25 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-
-#include "Loader.h"
-#include "GameObject.h"
-#include "LevelManager.h"
-
 #include <memory>
+#include <stack>
 
-#include "Car.h"
+#include "screens/Screen.h"
 
 class Game
 {
 public:
   Game();
-
   void run();
 
-  template <typename T>
-  void handle(T&)const{}
-  void handle(sf::Event::Closed& closed);
 private:
-  sf::RenderWindow m_window;
-  sf::Clock        m_clock;
-  float            m_timeLeft;
-  int              m_frameCount;
-  float            m_timeAccumulated;
+  void processEvents();
+  void update(sf::Time dt);
+  void render();
+  void applyAction();
 
-  LevelManager m_levlelMangaer;
+  void applyLetterboxView();   // keeps logical aspect ratio on any window size
+
+  sf::RenderWindow                    m_window;
+  std::stack<std::unique_ptr<Screen>> m_screens;
 };

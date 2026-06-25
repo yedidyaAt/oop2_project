@@ -1,7 +1,8 @@
 #pragma once
 
-#include <SFML/Audio.hpp> 
+#include <SFML/Audio.hpp>
 #include <vector>
+#include <optional>
 
 #include "ResourceManager.h"
 #include "Sounds.h"
@@ -9,16 +10,28 @@
 
 class SoundManager {
 public:
-	static SoundManager& getInstance();
+  static SoundManager& getInstance();
 
-	SoundManager(const SoundManager&) = delete;
-	SoundManager& operator=(const SoundManager&) = delete;
+  SoundManager(const SoundManager&) = delete;
+  SoundManager& operator=(const SoundManager&) = delete;
 
-	void playEffectSound(Sounds key);
-	void playMusic(Musics key);
+  void playEffectSound(Sounds key);
+
+  // Starts a track only if it is not already the one playing (so re-entering
+  // the menu does not restart the opening music).
+  void playMusic(Musics key, bool forceRestart = false);
+
+  void pauseMusic();
+  void resumeMusic();
+  void stopMusic();
+  bool isMusicPlaying() const;
+
+  // Removes finished sounds so the internal vector does not grow forever.
+  void cleanupFinished();
 
 private:
-	SoundManager();
-	std::vector<sf::Sound> m_sounds;
-	sf::Music m_music;
+  SoundManager();
+  std::vector<sf::Sound> m_sounds;
+  sf::Music m_music;
+  std::optional<Musics> m_currentTrack;
 };

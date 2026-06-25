@@ -1,6 +1,3 @@
-# Zip target generates .zip file in the parent dir of the project, but only if it builds correctly
-# ZipBackup target generates similar .zip file even if it doesn't build, and adds a timestamp to the filename
-
 set (CPACK_INCLUDE_TOPLEVEL_DIRECTORY ON)
 set (CPACK_SOURCE_GENERATOR "ZIP")
 set (CPACK_SOURCE_IGNORE_FILES
@@ -25,7 +22,6 @@ add_custom_target (Zip ${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR} --target pac
     COMMAND ${CMAKE_COMMAND} -E echo "*** ${MY_ZIP_TARGET_DIR}/${MY_ZIP_FILENAME}.zip file created ***")
 add_dependencies (Zip ${CMAKE_PROJECT_NAME})
 
-# Using cmake script to get updated timestamp on each run
 file (WRITE ${CMAKE_BINARY_DIR}/ZipBackup.cmake "string (TIMESTAMP MY_TIMESTAMP \"%Y-%m-%d-%H-%M-%S\")\n")
 file (APPEND ${CMAKE_BINARY_DIR}/ZipBackup.cmake "execute_process (COMMAND \"${CMAKE_COMMAND}\" --build \"${CMAKE_BINARY_DIR}\" --target package_source)\n")
 file (APPEND ${CMAKE_BINARY_DIR}/ZipBackup.cmake "execute_process (COMMAND \"${CMAKE_COMMAND}\" -E copy \"${CMAKE_BINARY_DIR}/${MY_ZIP_FILENAME}.zip\" \"${MY_ZIP_TARGET_DIR}/${MY_ZIP_FILENAME}-\${MY_TIMESTAMP}.zip\")\n")

@@ -24,7 +24,7 @@ LevelManager::LevelManager(sf::RenderWindow& window, LevelData levelData) :
 	//SoundManager::getInstance().playMusic(Musics::OPENING);
 }
 
-
+ 
 void LevelManager::run()
 {
 	sf::Color roudColor(40, 40, 40);

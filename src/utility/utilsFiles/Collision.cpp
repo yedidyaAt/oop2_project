@@ -61,19 +61,21 @@ namespace collision
 std::array<sf::Vector2f,4> collision::getGlobalPoints(const sf::FloatRect& rec,
                                                        const sf::Transform& trans)
 {
-  std::array<sf::Vector2f,4> points
+  // Shrink the rect toward its own center by HITBOX_SCALE, so transparent
+  // padding around the sprite is not counted as part of the body.
+  const sf::Vector2f center = rec.position + rec.size / 2.f;
+  const sf::Vector2f half = (rec.size / 2.f) * collision::HITBOX_SCALE;
+
+  std::array<sf::Vector2f, 4> points
   {
-    rec.position, // top left
-    {rec.position + sf::Vector2f{rec.size.x,0.f}},//topRight
-    {rec.position + sf::Vector2f{rec.size.x,rec.size.y}}, //bottomRight
-    {rec.position + sf::Vector2f{0.f,rec.size.y}},//bottomLeft
+    sf::Vector2f{ center.x - half.x, center.y - half.y }, // top-left
+    sf::Vector2f{ center.x + half.x, center.y - half.y }, // top-right
+    sf::Vector2f{ center.x + half.x, center.y + half.y }, // bottom-right
+    sf::Vector2f{ center.x - half.x, center.y + half.y }, // bottom-left
   };
 
-  for (int i = 0; i < 4;i++)
-  {
+  for (int i = 0; i < 4; i++)
     points[i] = trans.transformPoint(points[i]);
-  }
-
 
   return points;
 }

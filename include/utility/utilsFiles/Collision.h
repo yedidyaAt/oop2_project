@@ -13,6 +13,9 @@ namespace collision
 
   std::array<sf::Vector2f,4> getGlobalPoints(const sf::FloatRect& rec,const sf::Transform& trans);
 
+  sf::Vector2f hitPointByClosestCorners(const std::array<sf::Vector2f, 4>& carCorners,
+    const std::array<sf::Vector2f, 4>& objCorners);
+
   bool overlaps(const std::array<sf::Vector2f, 4>& a,
                 const std::array<sf::Vector2f, 4>& b);
 

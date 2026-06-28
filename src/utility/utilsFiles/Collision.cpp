@@ -80,6 +80,35 @@ std::array<sf::Vector2f,4> collision::getGlobalPoints(const sf::FloatRect& rec,
   return points;
 }
 
+sf::Vector2f collision::hitPointByClosestCorners(const std::array<sf::Vector2f, 4>& carCorners, const std::array<sf::Vector2f, 4>& objCorners)
+{
+  float minDistSq = std::numeric_limits<float>::max();  // smallest distance found so far
+  sf::Vector2f bestCarCorner, bestObjCorner;
+
+  // iterate over every pair of corners (car corner x obstacle corner)
+  for (const auto& carC : carCorners)
+  {
+    for (const auto& objC : objCorners)
+    {
+      // squared distance between the two corners
+      float dx = carC.x - objC.x;
+      float dy = carC.y - objC.y;
+      float distSq = dx * dx + dy * dy;
+
+      // if this is the closest pair so far, keep it
+      if (distSq < minDistSq)
+      {
+        minDistSq = distSq;
+        bestCarCorner = carC;
+        bestObjCorner = objC;
+      }
+    }
+  }
+
+  // midpoint between the two closest corners
+  return (bestCarCorner + bestObjCorner) / 2.f;
+}
+
 bool collision::overlaps(const std::array<sf::Vector2f, 4>& recA, const std::array<sf::Vector2f, 4>& recB)
 {
   const std::array<sf::Vector2f, 4> axes = getAxes(recA, recB);

@@ -57,7 +57,10 @@ void LevelManager::checkConflict()
     if (collision::overlaps(m_car->getCorners(), obj->getCorners()))
     {
       SoundManager::getInstance().playEffectSound(sounds::COLLISION);
-      m_effects.add(effectMaker::makeSmokeLoop(sf::Vector2f(100.f,100.f)));
+
+      const sf::Vector2f hitPos = collision::hitPointByClosestCorners(m_car->getCorners(), obj->getCorners());
+      m_effects.add(effectMaker::makeSmokeLoop(hitPos));
+      
       m_state = LevelState::Lost;   // any collision = immediate loss
       return;
     }

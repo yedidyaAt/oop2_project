@@ -12,7 +12,7 @@ namespace factory
     return map;
   }
 
- bool registerCreator(Objects type,const Creator& func)
+ bool registerCreator(objects type,const Creator& func)
  {
    getCreatorRegistry()[type] = func;
 

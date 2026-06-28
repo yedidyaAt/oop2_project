@@ -10,7 +10,7 @@
 #include <iomanip>
 
 ClockWidget::ClockWidget() :
-  m_text(ResourceManager::getInstance().getFont(Fonts::MAIN))
+  m_text(ResourceManager::getInstance().getFont(fonts::MAIN))
 {
   m_face.setRadius(ui::CLOCK_RADIUS);
   m_face.setOrigin({ ui::CLOCK_RADIUS, ui::CLOCK_RADIUS });

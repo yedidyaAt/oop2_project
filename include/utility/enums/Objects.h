@@ -1,6 +1,6 @@
 #pragma once
 
-enum class Objects
+enum class objects
 {
   PLAYER_CAR,
   WHEEL,

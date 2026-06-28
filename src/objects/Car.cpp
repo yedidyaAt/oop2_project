@@ -19,11 +19,11 @@
 
 
 // ======== register =========
-static bool registery = factory::registerCreator(Objects::PLAYER_CAR,
+static bool registery = factory::registerCreator(objects::PLAYER_CAR,
   [](const ObjectDescriptor& objDes)
   {
     return std::make_unique<Car>(
-      ResourceManager::getInstance().getTexture(Objects::PLAYER_CAR),
+      ResourceManager::getInstance().getTextureObject(objects::PLAYER_CAR),
       sf::Vector2f{ objDes.m_x, objDes.m_y },
       objectSizes::playerCar::WIDTH,
       sf::degrees(objDes.m_angle),
@@ -40,8 +40,8 @@ Car::Car(const sf::Texture& texture,
 
   GameObject(texture, sf::Vector2f{}, true), // vec2F{} because we live at transform world
   m_control(std::move(control)),
-  m_wheelR(ResourceManager::getInstance().getTexture(Objects::WHEEL)),
-  m_wheelL(ResourceManager::getInstance().getTexture(Objects::WHEEL)),
+  m_wheelR(ResourceManager::getInstance().getTextureObject(objects::WHEEL)),
+  m_wheelL(ResourceManager::getInstance().getTextureObject(objects::WHEEL)),
   m_angleWheel(0.f),
   m_heading(angle.asDegrees()),
   m_speed(0.f)

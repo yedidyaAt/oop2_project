@@ -18,7 +18,7 @@ LevelSelectScreen::LevelSelectScreen(sf::RenderWindow& window, std::vector<std::
   m_window(window),
   m_playlist(std::move(playlist)),
   m_bg(UITextures::LEVELS_BG),
-  m_title(ResourceManager::getInstance().getFont(Fonts::MAIN))
+  m_title(ResourceManager::getInstance().getFont(fonts::MAIN))
 {
   m_title.setString("SELECT LEVEL");
   m_title.setCharacterSize(ui::HEADING_SIZE);
@@ -87,7 +87,7 @@ void LevelSelectScreen::onResize(sf::Vector2u /*newSize*/) { layout(); }
 
 void LevelSelectScreen::onResume()
 {
-  SoundManager::getInstance().playMusic(Musics::OPENING);
+  SoundManager::getInstance().playMusic(musics::OPENING);
   build();    // re-read Progress (locks may have changed)
   layout();   // re-position the freshly-built tiles
 }
@@ -120,14 +120,14 @@ void LevelSelectScreen::handleEvent(const sf::Event& event, const sf::RenderWind
 
     if (m_back->contains(mouse))
     {
-      SoundManager::getInstance().playEffectSound(Sounds::CLICKING_BUTTON);
+      SoundManager::getInstance().playEffectSound(sounds::CLICKING_BUTTON);
       m_action = ScreenAction::Pop;
       return;
     }
 
     if (m_reset->contains(mouse))
     {
-      SoundManager::getInstance().playEffectSound(Sounds::CLICKING_BUTTON);
+      SoundManager::getInstance().playEffectSound(sounds::CLICKING_BUTTON);
       Progress::getInstance().resetAll();
       build();
       layout();
@@ -138,7 +138,7 @@ void LevelSelectScreen::handleEvent(const sf::Event& event, const sf::RenderWind
     {
       if (m_tiles[i]->contains(mouse) && m_tiles[i]->isUnlocked())
       {
-        SoundManager::getInstance().playEffectSound(Sounds::CLICKING_BUTTON);
+        SoundManager::getInstance().playEffectSound(sounds::CLICKING_BUTTON);
         m_next = std::make_unique<GameScreen>(m_window, m_playlist, i);
         m_action = ScreenAction::Push;
         return;

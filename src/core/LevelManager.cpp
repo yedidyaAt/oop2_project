@@ -7,6 +7,7 @@
 #include "SoundManager.h"
 #include "Sounds.h"
 #include "DisplaySettings.h"
+#include "EffectMaker.h"
 
 LevelManager::LevelManager(sf::RenderWindow& window, LevelData levelData) :
   m_window(window),
@@ -35,8 +36,10 @@ void LevelManager::handleEvent(const sf::Event& /*event*/)
 
 void LevelManager::update(sf::Time time)
 {
+  m_effects.update(time);
+
   if (m_state != LevelState::Playing)
-    return;
+    return;  
 
   m_timer.tick(time);
   m_car->update(time);
@@ -53,7 +56,8 @@ void LevelManager::checkConflict()
   {
     if (collision::overlaps(m_car->getCorners(), obj->getCorners()))
     {
-      SoundManager::getInstance().playEffectSound(Sounds::COLLISION);
+      SoundManager::getInstance().playEffectSound(sounds::COLLISION);
+      m_effects.add(effectMaker::makeSmokeLoop(sf::Vector2f(100.f,100.f)));
       m_state = LevelState::Lost;   // any collision = immediate loss
       return;
     }
@@ -64,7 +68,7 @@ void LevelManager::checkParking()
 {
   if (m_car->isStand() && parkingRules::isParked(*m_car, *m_target))
   {
-    SoundManager::getInstance().playEffectSound(Sounds::END_OF_STAGE);
+    SoundManager::getInstance().playEffectSound(sounds::END_OF_STAGE);
     m_state = LevelState::Won;
   }
 }
@@ -79,6 +83,8 @@ void LevelManager::draw()
     m_window.draw(*obj);
   m_window.draw(*m_target);
   m_window.draw(*m_car);
+
+  m_effects.draw(m_window);
 
   // HUD in screen space
   m_window.setView(m_window.getDefaultView());

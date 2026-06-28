@@ -1,19 +1,19 @@
 #include "ObjectUtils.h"
 
-Objects objectUtils::getObjectConversionByStr(const std::string& objStr)
+objects objectUtils::getObjectConversionByStr(const std::string& objStr)
 {
-  static const std::unordered_map<std::string, Objects> table = {
-      {"player_car",   Objects::PLAYER_CAR},
-      {"parked_car",   Objects::PARKED_CAR},
-      {"parking_spot", Objects::PARKING_SPOT},
-      {"wall",         Objects::WALL},
-      {"cone",         Objects::CONE},
-      {"barrier",      Objects::BARRIER},
-      {"ground",       Objects::GROUND},
-      {"grass_island", Objects::GRASS_ISLAND},
-      {"parking",      Objects::PARKING},
-      {"crossing",     Objects::CROSSING},
-      {"lane_divider", Objects::LANE_DIVIDER}
+  static const std::unordered_map<std::string, objects> table = {
+      {"player_car",   objects::PLAYER_CAR},
+      {"parked_car",   objects::PARKED_CAR},
+      {"parking_spot", objects::PARKING_SPOT},
+      {"wall",         objects::WALL},
+      {"cone",         objects::CONE},
+      {"barrier",      objects::BARRIER},
+      {"ground",       objects::GROUND},
+      {"grass_island", objects::GRASS_ISLAND},
+      {"parking",      objects::PARKING},
+      {"crossing",     objects::CROSSING},
+      {"lane_divider", objects::LANE_DIVIDER}
   };
 
    return table.at(objStr);

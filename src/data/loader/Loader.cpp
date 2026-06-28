@@ -29,7 +29,7 @@ LevelDescriptor Loader::getData(const std::string& path)const
 
     //========= LOAD CAR ==========
     const auto carDes = jFile.at("car");
-    Objects typeCarObj = objectUtils::getObjectConversionByStr(carDes.at("type").get<std::string>());
+    objects typeCarObj = objectUtils::getObjectConversionByStr(carDes.at("type").get<std::string>());
 
     levelDes.m_car = {
       typeCarObj,
@@ -40,7 +40,7 @@ LevelDescriptor Loader::getData(const std::string& path)const
 
     //========= LOAD TARGET(PARKING SPOT) ==========
     const auto targetDes = jFile.at("target");
-    Objects typeTargetObj = objectUtils::getObjectConversionByStr(targetDes.at("type").get<std::string>());
+    objects typeTargetObj = objectUtils::getObjectConversionByStr(targetDes.at("type").get<std::string>());
 
     levelDes.m_target = {
       typeTargetObj,
@@ -52,7 +52,7 @@ LevelDescriptor Loader::getData(const std::string& path)const
     //========= LOAD OTHER OBJECTS ==========
     for (const auto& obj : jFile.at("objects"))
     {
-      Objects typeObj = objectUtils::getObjectConversionByStr(obj.at("type").get<std::string>());
+      objects typeObj = objectUtils::getObjectConversionByStr(obj.at("type").get<std::string>());
       levelDes.m_objects.emplace_back(
         typeObj,
         obj.at("x").get<float>(),

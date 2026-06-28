@@ -11,7 +11,7 @@ SoundManager& SoundManager::getInstance() {
   return instance;
 }
 
-void SoundManager::playEffectSound(Sounds key)
+void SoundManager::playEffectSound(sounds key)
 {
   cleanupFinished();
 
@@ -28,7 +28,7 @@ void SoundManager::cleanupFinished()
   });
 }
 
-void SoundManager::playMusic(Musics key, bool forceRestart)
+void SoundManager::playMusic(musics key, bool forceRestart)
 {
   // already playing this track -> do nothing
   if (!forceRestart
@@ -39,9 +39,9 @@ void SoundManager::playMusic(Musics key, bool forceRestart)
   std::string path;
   switch (key)
   {
-  case Musics::GAME:    path = AssetPaths::Musics::GAME;    break;
-  case Musics::OPENING: path = AssetPaths::Musics::OPENING; break;
-  case Musics::CREDITS: path = AssetPaths::Musics::CREDITS; break;
+  case musics::GAME:    path = assetPaths::musics::GAME;    break;
+  case musics::OPENING: path = assetPaths::musics::OPENING; break;
+  case musics::CREDITS: path = assetPaths::musics::CREDITS; break;
   default: throw std::runtime_error("Unknown music key");
   }
 

@@ -5,7 +5,7 @@
 #include "UISettings.h"
 
 Button::Button(const std::string& label, sf::Vector2f center, sf::Vector2f size) :
-  m_label(ResourceManager::getInstance().getFont(Fonts::MAIN)),
+  m_label(ResourceManager::getInstance().getFont(fonts::MAIN)),
   m_center(center),
   m_size(size)
 {

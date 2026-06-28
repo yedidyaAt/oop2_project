@@ -50,7 +50,7 @@ CreditsScreen::CreditsScreen(sf::RenderWindow& window, bool fromGameComplete) :
   buildLines();
   layout();
 
-  SoundManager::getInstance().playMusic(Musics::CREDITS, true);   // force restart
+  SoundManager::getInstance().playMusic(musics::CREDITS, true);   // force restart
 }
 
 void CreditsScreen::buildLines()
@@ -58,7 +58,7 @@ void CreditsScreen::buildLines()
   m_lines.clear();
   for (const auto& l : CREDIT_LINES)
   {
-    sf::Text t(ResourceManager::getInstance().getFont(Fonts::MAIN));
+    sf::Text t(ResourceManager::getInstance().getFont(fonts::MAIN));
     t.setString(l.text);
     t.setCharacterSize(l.size);
     t.setFillColor(ui::TITLE_COL);

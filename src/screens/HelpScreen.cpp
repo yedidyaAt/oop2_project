@@ -33,8 +33,8 @@ namespace {
 HelpScreen::HelpScreen(sf::RenderWindow& window) :
   m_window(window),
   m_bg(UITextures::MENU_BG),
-  m_title(ResourceManager::getInstance().getFont(Fonts::MAIN)),
-  m_body(ResourceManager::getInstance().getFont(Fonts::MAIN))
+  m_title(ResourceManager::getInstance().getFont(fonts::MAIN)),
+  m_body(ResourceManager::getInstance().getFont(fonts::MAIN))
 {
   m_title.setString("HOW TO PLAY");
   m_title.setCharacterSize(ui::HEADING_SIZE);
@@ -100,7 +100,7 @@ void HelpScreen::handleEvent(const sf::Event& event, const sf::RenderWindow& win
   {
     if (mb->button == sf::Mouse::Button::Left && m_back->contains(mouse))
     {
-      SoundManager::getInstance().playEffectSound(Sounds::CLICKING_BUTTON);
+      SoundManager::getInstance().playEffectSound(sounds::CLICKING_BUTTON);
       m_action = ScreenAction::Pop;
     }
   }

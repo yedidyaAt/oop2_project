@@ -15,11 +15,11 @@ public:
   SoundManager(const SoundManager&) = delete;
   SoundManager& operator=(const SoundManager&) = delete;
 
-  void playEffectSound(Sounds key);
+  void playEffectSound(sounds key);
 
   // Starts a track only if it is not already the one playing (so re-entering
   // the menu does not restart the opening music).
-  void playMusic(Musics key, bool forceRestart = false);
+  void playMusic(musics key, bool forceRestart = false);
 
   void pauseMusic();
   void resumeMusic();
@@ -33,5 +33,5 @@ private:
   SoundManager();
   std::vector<sf::Sound> m_sounds;
   sf::Music m_music;
-  std::optional<Musics> m_currentTrack;
+  std::optional<musics> m_currentTrack;
 };

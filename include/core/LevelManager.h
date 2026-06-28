@@ -9,6 +9,7 @@
 #include "LevelState.h"
 #include "HUD.h"
 #include "Timer.h"
+#include "EffectManager.h"
 
 // Runs ONE level. Driven by GameScreen (handleEvent / update / draw); it does
 // not own the main loop and does not draw win/lose UI - that is the screen's
@@ -36,6 +37,8 @@ private:
   std::vector<std::unique_ptr<GameObject>> m_blocksObj  = std::vector<std::unique_ptr<GameObject>>();
   std::vector<std::unique_ptr<GameObject>> m_decalsObj  = std::vector<std::unique_ptr<GameObject>>();
   LevelState                               m_state;
+  EffectManager                            m_effects;
+
 
   sf::View                                 m_worldView;
   HUD                                      m_hud;

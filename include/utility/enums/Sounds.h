@@ -1,6 +1,6 @@
 #pragma once
 
-enum class Sounds
+enum class sounds
 {
   CLICKING_BUTTON,
   COLLISION,

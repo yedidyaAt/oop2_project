@@ -7,6 +7,6 @@
 
 namespace objectUtils
 {
-  Objects getObjectConversionByStr(const std::string& objStr);
+  objects getObjectConversionByStr(const std::string& objStr);
 
 }

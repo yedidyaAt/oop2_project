@@ -12,9 +12,9 @@
 namespace factory
 {
   using Creator = std::function<std::unique_ptr<GameObject>(const ObjectDescriptor&)>;
-  using CreatorRegistry = std::map<Objects, Creator>;
+  using CreatorRegistry = std::map<objects, Creator>;
 
-  bool registerCreator(Objects type,const Creator& func);
+  bool registerCreator(objects type,const Creator& func);
 
   std::unique_ptr<GameObject> create(const ObjectDescriptor& objD);
 }

@@ -20,9 +20,9 @@ MenuScreen::MenuScreen(sf::RenderWindow& window, std::vector<std::string> playli
   m_window(window),
   m_playlist(std::move(playlist)),
   m_bg(UITextures::MENU_BG),
-  m_title(ResourceManager::getInstance().getFont(Fonts::MAIN))
+  m_title(ResourceManager::getInstance().getFont(fonts::MAIN))
 {
-  SoundManager::getInstance().playMusic(Musics::OPENING);
+  SoundManager::getInstance().playMusic(musics::OPENING);
 
   m_title.setString("EXTREME CAR PARKING");
   m_title.setCharacterSize(ui::TITLE_SIZE);
@@ -64,7 +64,7 @@ void MenuScreen::onResize(sf::Vector2u /*newSize*/)
 
 void MenuScreen::onResume()
 {
-  SoundManager::getInstance().playMusic(Musics::OPENING);
+  SoundManager::getInstance().playMusic(musics::OPENING);
 }
 
 void MenuScreen::handleEvent(const sf::Event& event, const sf::RenderWindow& window)
@@ -94,7 +94,7 @@ void MenuScreen::handleEvent(const sf::Event& event, const sf::RenderWindow& win
         if (!m_buttons[i]->contains(mouse))
           continue;
 
-        SoundManager::getInstance().playEffectSound(Sounds::CLICKING_BUTTON);
+        SoundManager::getInstance().playEffectSound(sounds::CLICKING_BUTTON);
 
         switch (i)
         {

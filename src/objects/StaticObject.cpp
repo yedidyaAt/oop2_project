@@ -17,10 +17,10 @@
 
 //=========== WALL ==================
 static const bool registeryWall = factory::registerCreator(
-  Objects::WALL,
+  objects::WALL,
   [](const ObjectDescriptor& objDes)
   {
-    return std::make_unique<StaticObject>(ResourceManager::getInstance().getTexture(Objects::WALL),
+    return std::make_unique<StaticObject>(ResourceManager::getInstance().getTextureObject(objects::WALL),
       sf::Vector2f{ objDes.m_x, objDes.m_y },
       objectSizes::wall::WIDTH,
       sf::degrees(objDes.m_angle),
@@ -30,10 +30,10 @@ static const bool registeryWall = factory::registerCreator(
 
 //=========== PARKED_CAR ==================
 static const bool registeryParkedCar = factory::registerCreator(
-  Objects::PARKED_CAR,
+  objects::PARKED_CAR,
   [](const ObjectDescriptor& objDes)
   {
-    return std::make_unique<StaticObject>(ResourceManager::getInstance().getTexture(Objects::PARKED_CAR),
+    return std::make_unique<StaticObject>(ResourceManager::getInstance().getTextureObject(objects::PARKED_CAR),
       sf::Vector2f{ objDes.m_x, objDes.m_y },
       objectSizes::parkedCar::WIDTH,
       sf::degrees(objDes.m_angle),
@@ -43,10 +43,10 @@ static const bool registeryParkedCar = factory::registerCreator(
 
 //=========== PARKING_SPOT ==================
 static const bool registeryParkingSpot = factory::registerCreator(
-  Objects::PARKING_SPOT,
+  objects::PARKING_SPOT,
   [](const ObjectDescriptor& objDes)
   {
-    return std::make_unique<StaticObject>(ResourceManager::getInstance().getTexture(Objects::PARKING_SPOT),
+    return std::make_unique<StaticObject>(ResourceManager::getInstance().getTextureObject(objects::PARKING_SPOT),
       sf::Vector2f{ objDes.m_x, objDes.m_y },
       objectSizes::parkingSpot::WIDTH,
       sf::degrees(objDes.m_angle),
@@ -56,10 +56,10 @@ static const bool registeryParkingSpot = factory::registerCreator(
 
 //=========== CONE ==================
 static const bool registeryCone = factory::registerCreator(
-  Objects::CONE,
+  objects::CONE,
   [](const ObjectDescriptor& objDes)
   {
-    return std::make_unique<StaticObject>(ResourceManager::getInstance().getTexture(Objects::CONE),
+    return std::make_unique<StaticObject>(ResourceManager::getInstance().getTextureObject(objects::CONE),
       sf::Vector2f{ objDes.m_x, objDes.m_y },
       objectSizes::cone::WIDTH,
       sf::degrees(objDes.m_angle),
@@ -69,10 +69,10 @@ static const bool registeryCone = factory::registerCreator(
 
 //=========== BARRIER ==================
 static const bool registeryBarrier = factory::registerCreator(
-  Objects::BARRIER,
+  objects::BARRIER,
   [](const ObjectDescriptor& objDes)
   {
-    return std::make_unique<StaticObject>(ResourceManager::getInstance().getTexture(Objects::BARRIER),
+    return std::make_unique<StaticObject>(ResourceManager::getInstance().getTextureObject(objects::BARRIER),
       sf::Vector2f{ objDes.m_x, objDes.m_y },
       objectSizes::barrier::WIDTH,
       sf::degrees(objDes.m_angle),
@@ -82,10 +82,10 @@ static const bool registeryBarrier = factory::registerCreator(
 
 //=========== GRASS_ISLAND ==================
 static const bool registeryGrassIsland = factory::registerCreator(
-  Objects::GRASS_ISLAND,
+  objects::GRASS_ISLAND,
   [](const ObjectDescriptor& objDes)
   {
-    return std::make_unique<StaticObject>(ResourceManager::getInstance().getTexture(Objects::GRASS_ISLAND),
+    return std::make_unique<StaticObject>(ResourceManager::getInstance().getTextureObject(objects::GRASS_ISLAND),
       sf::Vector2f{ objDes.m_x, objDes.m_y },
       objectSizes::grassIsland::WIDTH,
       sf::degrees(objDes.m_angle),
@@ -94,10 +94,10 @@ static const bool registeryGrassIsland = factory::registerCreator(
 );
 //=========== PARKING ==================
 static const bool registryParking = factory::registerCreator(
-  Objects::PARKING,
+  objects::PARKING,
   [](const ObjectDescriptor& objDes)
   {
-    return std::make_unique<StaticObject>(ResourceManager::getInstance().getTexture(Objects::PARKING),
+    return std::make_unique<StaticObject>(ResourceManager::getInstance().getTextureObject(objects::PARKING),
       sf::Vector2f{ objDes.m_x, objDes.m_y },
       objectSizes::parking::WIDTH,
       sf::degrees(objDes.m_angle),
@@ -106,10 +106,10 @@ static const bool registryParking = factory::registerCreator(
 );
 //=========== CROSSING ==================
 static const bool registryCrossing = factory::registerCreator(
-  Objects::CROSSING,
+  objects::CROSSING,
   [](const ObjectDescriptor& objDes)
   {
-    return std::make_unique<StaticObject>(ResourceManager::getInstance().getTexture(Objects::CROSSING),
+    return std::make_unique<StaticObject>(ResourceManager::getInstance().getTextureObject(objects::CROSSING),
       sf::Vector2f{ objDes.m_x, objDes.m_y },
       objectSizes::crossing::WIDTH,
       sf::degrees(objDes.m_angle),
@@ -118,10 +118,10 @@ static const bool registryCrossing = factory::registerCreator(
 );
 //=========== LANE_DIVIDER ==================
 static const bool registryLaneDivider = factory::registerCreator(
-  Objects::LANE_DIVIDER,
+  objects::LANE_DIVIDER,
   [](const ObjectDescriptor& objDes)
   {
-    return std::make_unique<StaticObject>(ResourceManager::getInstance().getTexture(Objects::LANE_DIVIDER),
+    return std::make_unique<StaticObject>(ResourceManager::getInstance().getTextureObject(objects::LANE_DIVIDER),
       sf::Vector2f{ objDes.m_x, objDes.m_y },
       objectSizes::laneDivider::WIDTH,
       sf::degrees(objDes.m_angle),

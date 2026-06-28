@@ -9,7 +9,7 @@
 #include <string>
 
 LevelTile::LevelTile(std::size_t levelNumber, bool unlocked, sf::Vector2f center) :
-  m_number(ResourceManager::getInstance().getFont(Fonts::MAIN)),
+  m_number(ResourceManager::getInstance().getFont(fonts::MAIN)),
   m_lock(ResourceManager::getInstance().getUITexture(UITextures::LOCK)),
   m_levelNumber(levelNumber),
   m_unlocked(unlocked)

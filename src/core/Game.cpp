@@ -130,7 +130,8 @@ void Game::render()
 {
   applyLetterboxView();
 
-  m_window.clear(sf::Color(20, 20, 24));
+  m_window.clear(sf::Color({ 160, 160, 165 }));
+  
 
   if (!m_screens.empty())
     m_screens.top()->draw(m_window);

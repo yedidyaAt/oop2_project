@@ -4,8 +4,13 @@ file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/images/object
      FILES_MATCHING PATTERN "*.png")
 
 # ui images
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/ui
-     DESTINATION ${CMAKE_BINARY_DIR}/resources/
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/images/ui
+     DESTINATION ${CMAKE_BINARY_DIR}/resources/images
+     FILES_MATCHING PATTERN "*.png")
+
+# animation images
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/images/animation
+     DESTINATION ${CMAKE_BINARY_DIR}/resources/images
      FILES_MATCHING PATTERN "*.png")
 
 # sounds

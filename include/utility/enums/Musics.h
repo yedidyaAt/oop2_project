@@ -1,6 +1,6 @@
 #pragma once
 
-enum class Musics
+enum class musics
 {
   GAME,
   OPENING,

@@ -34,7 +34,7 @@ GameScreen::GameScreen(sf::RenderWindow& window,
   m_levelIndex(levelIndex),
   m_level(window, LevelBuilder().buildLevel(m_playlist[levelIndex]))
 {
-  SoundManager::getInstance().playMusic(Musics::GAME);
+  SoundManager::getInstance().playMusic(musics::GAME);
 
   m_pauseBtn = std::make_unique<Button>("II  Pause",
     sf::Vector2f{ LOGICAL_W - 90.f, 32.f }, sf::Vector2f{ 150.f, 44.f });
@@ -150,7 +150,7 @@ void GameScreen::handleEvent(const sf::Event& event, const sf::RenderWindow& win
   if (const auto* mb = event.getIf<sf::Event::MouseButtonPressed>())
     if (mb->button == sf::Mouse::Button::Left && m_pauseBtn->contains(mouse))
     {
-      SoundManager::getInstance().playEffectSound(Sounds::CLICKING_BUTTON);
+      SoundManager::getInstance().playEffectSound(sounds::CLICKING_BUTTON);
       openPauseModal();
     }
 
@@ -171,7 +171,7 @@ void GameScreen::handleModalClick(sf::Vector2f mouse)
     return;
 
   const std::size_t i = *clicked;
-  SoundManager::getInstance().playEffectSound(Sounds::CLICKING_BUTTON);
+  SoundManager::getInstance().playEffectSound(sounds::CLICKING_BUTTON);
 
   if (m_phase == Phase::Paused)
   {
@@ -217,10 +217,10 @@ void GameScreen::handleModalClick(sf::Vector2f mouse)
 
 void GameScreen::update(sf::Time dt)
 {
+  m_level.update(dt);
+
   if (m_phase != Phase::Playing)
     return;
-
-  m_level.update(dt);
 
   if (m_level.state() == LevelState::Won)
     openWinModal();

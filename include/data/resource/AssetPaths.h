@@ -2,27 +2,34 @@
 #pragma once
 #include <string>
 
-namespace AssetPaths {
-  inline const std::string IMAGES_DIR = "resources/images/object/";
+namespace assetPaths {
+  inline const std::string OBJECTS_DIR = "resources/images/object/";
 
-  namespace Objects {
-    inline const std::string PLAYER_CAR   = IMAGES_DIR + "car_player.png";
-    inline const std::string PARKED_CAR   = IMAGES_DIR + "parking_car.png";
-    inline const std::string PARKING_SPOT = IMAGES_DIR + "parking_spot.png";
-    inline const std::string WALL         = IMAGES_DIR + "wall.png";
-    inline const std::string CONE         = IMAGES_DIR + "cone.png";
-    inline const std::string BARRIER      = IMAGES_DIR + "barrier.png";
-    inline const std::string GROUND       = IMAGES_DIR + "ground.png";
-    inline const std::string GRASS_ISLAND = IMAGES_DIR + "grass_island.png";
-    inline const std::string PARKING      = IMAGES_DIR + "parking.png";
-    inline const std::string CROSSING     = IMAGES_DIR + "crossing.png";
-    inline const std::string LANE_DIVIDER = IMAGES_DIR + "lane_divider.png";
-    inline const std::string WHEEL        = IMAGES_DIR + "wheel.png";
+  namespace objects {
+    inline const std::string PLAYER_CAR   = OBJECTS_DIR + "car_player.png";
+    inline const std::string PARKED_CAR   = OBJECTS_DIR + "parking_car.png";
+    inline const std::string PARKING_SPOT = OBJECTS_DIR + "parking_spot.png";
+    inline const std::string WALL         = OBJECTS_DIR + "wall.png";
+    inline const std::string CONE         = OBJECTS_DIR + "cone.png";
+    inline const std::string BARRIER      = OBJECTS_DIR + "barrier.png";
+    inline const std::string GROUND       = OBJECTS_DIR + "ground.png";
+    inline const std::string GRASS_ISLAND = OBJECTS_DIR + "grass_island.png";
+    inline const std::string PARKING      = OBJECTS_DIR + "parking.png";
+    inline const std::string CROSSING     = OBJECTS_DIR + "crossing.png";
+    inline const std::string LANE_DIVIDER = OBJECTS_DIR + "lane_divider.png";
+    inline const std::string WHEEL        = OBJECTS_DIR + "wheel.png";
   }
 
-  inline const std::string UI_DIR = "resources/ui/";
+  inline const std::string ANIMATION_DIR = "resources/images/animation/";
 
-  namespace UI {
+  namespace animation
+  {
+    inline const std::string SMOKE_TILE_SHEET = ANIMATION_DIR + "smoke_tile_sheet.png";
+  }
+
+  inline const std::string UI_DIR = "resources/images/ui/";
+
+  namespace ui {
     inline const std::string MENU_BG     = UI_DIR + "menu_bg.png";
     inline const std::string LEVELS_BG   = UI_DIR + "levels_bg.png";
     inline const std::string STAR_FILLED = UI_DIR + "star_filled.png";
@@ -32,13 +39,13 @@ namespace AssetPaths {
 
   inline const std::string FONTS_DIR = "resources/fonts/";
 
-  namespace Fonts {
+  namespace fonts {
     inline const std::string MAIN = FONTS_DIR + "main.ttf";
   }
 
   inline const std::string SOUND_DIR = "resources/sounds/";
 
-  namespace Sounds {
+  namespace sounds {
       inline const std::string CLICKING_BUTTON = SOUND_DIR + "Clicking_a_button.wav";
       inline const std::string COLLISION       = SOUND_DIR + "collision.wav";
       inline const std::string END_OF_GAME     = SOUND_DIR + "end_of_game.wav";
@@ -47,7 +54,7 @@ namespace AssetPaths {
 
   inline const std::string MUSIC_DIR = "resources/music/";
 
-  namespace Musics {
+  namespace musics {
       inline const std::string GAME    = MUSIC_DIR + "game.wav";
       inline const std::string OPENING = MUSIC_DIR + "opening.wav";
       inline const std::string CREDITS = MUSIC_DIR + "credits.mp3";

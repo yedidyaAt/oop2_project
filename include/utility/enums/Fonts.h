@@ -1,6 +1,6 @@
 #pragma once
 
-enum class Fonts
+enum class fonts
 {
   MAIN
 };

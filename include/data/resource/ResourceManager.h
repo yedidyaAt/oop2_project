@@ -6,6 +6,7 @@
 #include <string>
 
 #include "Objects.h"
+#include "Effects.h"
 #include "Sounds.h"
 #include "Fonts.h"
 #include "UITextures.h"
@@ -18,15 +19,17 @@ public:
   ResourceManager& operator=(const ResourceManager&) = delete;
 
   void load();
-  const sf::Texture& getTexture(const Objects& key);
+  const sf::Texture& getTextureObject(const objects& key);
+  const sf::Texture& getTextureEffects(const Effects& key);
   const sf::Texture& getUITexture(const UITextures& key);
-  const sf::SoundBuffer& getSound(const Sounds& key);
-  const sf::Font& getFont(const Fonts& key);
+  const sf::SoundBuffer& getSound(const sounds& key);
+  const sf::Font& getFont(const fonts& key);
 
 private:
   ResourceManager();
-  std::unordered_map<Objects, sf::Texture> m_textures;
+  std::unordered_map<objects, sf::Texture> m_texturesObjects;
+  std::unordered_map<Effects, sf::Texture> m_texturesEffects;
   std::unordered_map<UITextures, sf::Texture> m_uiTextures;
-  std::unordered_map<Sounds, sf::SoundBuffer> m_sound;
-  std::unordered_map<Fonts, sf::Font> m_fonts;
+  std::unordered_map<sounds, sf::SoundBuffer> m_sound;
+  std::unordered_map<fonts, sf::Font> m_fonts;
 };

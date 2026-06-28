@@ -5,7 +5,7 @@
 #include "UISettings.h"
 
 Modal::Modal(const std::string& title, sf::Vector2u windowSize) :
-  m_title(ResourceManager::getInstance().getFont(Fonts::MAIN)),
+  m_title(ResourceManager::getInstance().getFont(fonts::MAIN)),
   m_winSize(windowSize)
 {
   m_title.setString(title);
@@ -26,7 +26,7 @@ std::size_t Modal::addButton(const std::string& label)
 
 void Modal::addInfoLine(const std::string& text)
 {
-  sf::Text line(ResourceManager::getInstance().getFont(Fonts::MAIN));
+  sf::Text line(ResourceManager::getInstance().getFont(fonts::MAIN));
   line.setString(text);
   line.setCharacterSize(ui::BODY_SIZE);
   line.setFillColor(ui::BODY_COL);

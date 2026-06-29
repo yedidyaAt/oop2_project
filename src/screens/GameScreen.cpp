@@ -217,10 +217,10 @@ void GameScreen::handleModalClick(sf::Vector2f mouse)
 
 void GameScreen::update(sf::Time dt)
 {
-  m_level.update(dt);
-
-  if (m_phase != Phase::Playing)
+  if (m_phase == Phase::Paused)
     return;
+
+  m_level.update(dt);
 
   if (m_level.state() == LevelState::Won)
     openWinModal();

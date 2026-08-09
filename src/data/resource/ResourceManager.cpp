@@ -23,8 +23,6 @@ void ResourceManager::load() {
     throw std::runtime_error("Failed to load texture: " + assetPaths::objects::CONE);
   if (!m_texturesObjects[objects::BARRIER].loadFromFile(assetPaths::objects::BARRIER))
     throw std::runtime_error("Failed to load texture: " + assetPaths::objects::BARRIER);
-  if (!m_texturesObjects[objects::GROUND].loadFromFile(assetPaths::objects::GROUND))
-    throw std::runtime_error("Failed to load texture: " + assetPaths::objects::GROUND);
   if (!m_texturesObjects[objects::GRASS_ISLAND].loadFromFile(assetPaths::objects::GRASS_ISLAND))
     throw std::runtime_error("Failed to load texture: " + assetPaths::objects::GRASS_ISLAND);
   if (!m_texturesObjects[objects::WHEEL].loadFromFile(assetPaths::objects::WHEEL))

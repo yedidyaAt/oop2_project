@@ -12,7 +12,6 @@ namespace assetPaths {
     inline const std::string WALL         = OBJECTS_DIR + "wall.png";
     inline const std::string CONE         = OBJECTS_DIR + "cone.png";
     inline const std::string BARRIER      = OBJECTS_DIR + "barrier.png";
-    inline const std::string GROUND       = OBJECTS_DIR + "ground.png";
     inline const std::string GRASS_ISLAND = OBJECTS_DIR + "grass_island.png";
     inline const std::string PARKING      = OBJECTS_DIR + "parking.png";
     inline const std::string CROSSING     = OBJECTS_DIR + "crossing.png";

@@ -9,7 +9,6 @@ objects objectUtils::getObjectConversionByStr(const std::string& objStr)
       {"wall",         objects::WALL},
       {"cone",         objects::CONE},
       {"barrier",      objects::BARRIER},
-      {"ground",       objects::GROUND},
       {"grass_island", objects::GRASS_ISLAND},
       {"parking",      objects::PARKING},
       {"crossing",     objects::CROSSING},

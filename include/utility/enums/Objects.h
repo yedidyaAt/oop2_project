@@ -9,7 +9,6 @@ enum class objects
   WALL,
   CONE,
   BARRIER,
-  GROUND,
   GRASS_ISLAND,
   PARKING,
   CROSSING,
